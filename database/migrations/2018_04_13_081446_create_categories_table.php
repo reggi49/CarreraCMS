@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterPostsAddPublishedAtColumn extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AlterPostsAddPublishedAtColumn extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->timestamp('published_at')->nullable();
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AlterPostsAddPublishedAtColumn extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->string('published_at');
-        });
+        Schema::dropIfExists('categories');
     }
 }
