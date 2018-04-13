@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Carbon\Carbon;
 class PostsTableSeeder extends Seeder
 {
     /**
@@ -16,21 +16,25 @@ class PostsTableSeeder extends Seeder
 
         //generate dummy data
         $posts = [];
+        $date = Carbon::create(2017, 4, 3, 9);
 
         for($i=1;$i<=10;$i++)
         {
-            $image = "Posts_Image_".rand(1,5).".jpg";
-            $date = date("Y-m-d H:i:s", strtotime("2018-07-18 08:00:00"));
+            $image = "Post_Image_".rand(1,5).".jpg";
+            $date->addDays($i);
+            $publishedDate = clone($date);
+            $createdDate = clone($date);
 
             $posts[] =[
                 'author_id' =>rand(1,3),
-                'title' => "Regional Response Architect{i}",
-                'excerpt' => "Gorczany Via{i}",
-                'body' => "{i} Et voluptatem veniam necessitatibus. Dolores qui explicabo quisquam deleniti vel. Veniam officia et iure. Facere sed possimus molestiae dolores doloremque accusantium beatae. Aperiam tempore itaque quasi vero quidem incidunt. Illum velit quia.",
+                'title' => $i."Regional Response Architect",
+                'excerpt' => $i."Gorczany Via",
+                'body' => $i."Et voluptatem veniam necessitatibus. Dolores qui explicabo quisquam deleniti vel. Veniam officia et iure. Facere sed possimus molestiae dolores doloremque accusantium beatae. Aperiam tempore itaque quasi vero quidem incidunt. Illum velit quia.",
                 'slug' => $i."omnis-aut-non",
                 'image' => rand(0,1) == 1? $image:NULL,
-                'created_at' => $date,
-                'updated_at' => $date,
+                'created_at' => $createdDate,
+                'updated_at' => $createdDate,
+                'published_at' => $i > 5 ?$publishedDate : (rand(0,1) == 0 ? null : $publishedDate->addDays($i+4)),
             ];
         }
         DB::table('posts')->insert($posts);
