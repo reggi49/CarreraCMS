@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
-
+use App\User;
 class BlogController extends Controller
 {
     protected $limit = 3;
@@ -37,9 +37,24 @@ class BlogController extends Controller
         //dd(\DB::getQUeryLog());
     }
 
+    public function author(User $author)
+    {
+        $authorName = $author->name;
+
+        //\DB::enableQueryLog();
+        $posts = $author->posts()
+        ->with('category')
+        ->latestFirst()
+        ->published()
+        ->simplePaginate($this->limit);
+
+        return view('blog.index',compact('posts','authorName'));
+    }
+
     public function show(Post $post)
     {
         //$post = Post::published()->findOrFail($id);
+        $post->increment('view_count');
         return view("blog.show", compact('post'));
     }
 }

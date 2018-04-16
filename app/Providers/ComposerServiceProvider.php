@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Category;
+use App\Views\Composers\NavigationComposer;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -14,13 +14,14 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('layouts.sidebar',function($view){
-            $categories = Category::with(['posts'=>function($query){
-            $query->published();
-        }])->orderBy('title','asc')->get();
+        view()->composer('layouts.sidebar', NavigationComposer::class);
+        // view()->composer('layouts.sidebar',function($view){
+        //     $categories = Category::with(['posts'=>function($query){
+        //     $query->published();
+        // }])->orderBy('title','asc')->get();
 
-        return $view->with('categories', $categories);
-        });
+        // return $view->with('categories', $categories);
+        // });
     }
 
     /**
