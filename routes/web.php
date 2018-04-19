@@ -32,4 +32,12 @@ Route::get('/author/{author}',[
 ]);
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Backend\HomeController@index');
+
+//Route::resource('/backend/blog', 'Backend\BlogController');
+Route::resource('/backend/blog', 'Backend\BlogController', [
+    'as' => 'backend'
+]);
+
+// Get Data Datatables
+Route::get('datatable/getdata', 'Backend\BlogController@getPosts')->name('datatable/getdata');

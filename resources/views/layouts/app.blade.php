@@ -10,18 +10,18 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend-assets/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('backend/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend-assets/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ asset('backend/css/ionicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend-assets/css/ionicons.min.css') }}">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="{{ asset('backend/css/jquery-jvectormap.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend-assets/css/jquery-jvectormap.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('backend/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend-assets/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{ asset('backend/css/_all-skins.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('backend-assets/css/_all-skins.min.css') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,11 +87,11 @@
     </div> --}}
 
 <!-- jQuery 3 -->
-<script src="{{ asset('backend/js/jquery.min.js') }}"></script>
+<script src="{{ asset('backend-assets/js/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('backend-assets/js/bootstrap.min.js') }}"></script>
 <!-- iCheck -->
-<script src="{{ asset('backend/js/icheck.min.js') }}"></script>
+<script src="{{ asset('backend-assets/js/icheck.min.js') }}"></script>
 <script>
   $(function () {
     $('input').iCheck({

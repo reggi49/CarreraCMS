@@ -49,6 +49,30 @@ class Post extends Model
         return $this->excerpt ? Markdown::convertToHtml(e($this->excerpt)) : NULL;
     }
 
+    public function dateFormated($showTimes=false)
+    {
+        \Carbon\Carbon::setLocale('id');
+        $format = 'l, d F Y H:i';
+        if ($showTimes) $format = 'l, d F Y';
+        return \Carbon\Carbon::parse($this->attributes['created_at'])->format($format);
+        //return \Carbon\Carbon::parse($this->attributes['created_at'])->diffForHumans();
+    }
+
+    public function publicationLabel()
+    {
+        if (! $this->published_at){
+            return '<span class="label label-warning">Draft</span>';
+        }
+        elseif ($this->published_at && $this->published_at->isFuture())
+        {
+            return '<span class="label label-info">Schedue</span>';
+        }
+        else 
+        {
+            return '<span class="label label-success">Published</span>';
+        }
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

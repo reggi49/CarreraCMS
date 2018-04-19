@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'id',
 
     /*
     |--------------------------------------------------------------------------
@@ -121,6 +121,7 @@ return [
 
     'providers' => [
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
         /*
          * Laravel Framework Service Providers...
@@ -178,6 +179,7 @@ return [
 
     'aliases' => [
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
