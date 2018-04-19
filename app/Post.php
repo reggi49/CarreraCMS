@@ -8,6 +8,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 
 class Post extends Model
 {
+    protected $fillable =['title','slug','excerpt','body','published_at','category_id'];
     protected $dates=['published_at'];
     
     public function author()
@@ -78,6 +79,10 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     } 
 
+    public function setPublishedAttribute($value)
+    {
+        $this->attributes['published_at'] = $value ?: NULL;
+    }
     public function getDateAttribute($value)
     {
         return is_null($this->published_at)? '': $this->published_at->diffForHumans();

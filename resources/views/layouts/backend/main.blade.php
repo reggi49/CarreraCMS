@@ -96,8 +96,8 @@
         columns: [
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'title', name: 'title'},
-            {data: 'author.name', name: 'author.name'},
-            {data: 'category.title', name: 'category.title'},
+            {data: 'author.name', name: 'author.name', orderable: false},
+            {data: 'category.title', name: 'category.title', orderable: false},
             {data: 'created_at', name: 'created_at'},
             {data: 'status', name: 'status'}
         ]
