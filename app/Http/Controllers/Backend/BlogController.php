@@ -14,12 +14,20 @@ class BlogController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $uploadPath;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->uploadPath = public_path('/img');
+    } 
     public function index()
     {
         $posts = Post::all();
         return view("backend.blog.index",compact('posts'));
     }
-
+    
     public function getPosts()
     {
         $posts = Post::with('author','category')
@@ -69,10 +77,27 @@ class BlogController extends BackendController
      */
     public function store(Requests\PostRequest $request)
     {
-            $request->user()->posts()->create($request->all());
+            $data = $this->handleRequest($request);
+            $request->user()->posts()->create($data);
             return redirect('/backend/blog')->with('message','The post was created successfuly');
     }
 
+    private function handleRequest($request)
+    {
+        $data = $request->all();
+
+        if($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $fileName = $image->getClientOriginalName();
+            $destination = $this->uploadPath;
+
+            $image->move($destination, $fileName);
+            $data['image'] = $fileName;
+        }
+
+        return $data;
+    }
     /**
      * Display the specified resource.
      *
