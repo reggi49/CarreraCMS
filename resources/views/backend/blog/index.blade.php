@@ -21,7 +21,7 @@
           <div class="box">
             <div class="box-header">
               {{-- <h1 class="box-title" style="padding-right:10px;">Posts</h1> --}}
-                <a href="{{ route('backend.blog.create')}}" class="btn btn-success">Add New Post</a>
+                <a href="{{ route('backend.blog.create')}}" class="btn btn-success"><i class="fa fa-pencil"></i> Add New Post</a>
             </div>
 
             <!-- /.box-header -->

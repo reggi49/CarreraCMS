@@ -1,7 +1,7 @@
 <?php
 return [
     'image' => [
-        'directory' => 'img',
+        'directory' => 'images',
         'thumbnail' =>[
             'width' => 250,
             'height' => 170

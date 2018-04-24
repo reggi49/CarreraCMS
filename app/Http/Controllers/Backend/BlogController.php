@@ -35,8 +35,11 @@ class BlogController extends BackendController
         ->latestFirst();
         return \DataTables::of($posts)
         ->addColumn('action', function ($posts) {
-            return '<a href="'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-            | <a href="destroy/'.$posts->id.'" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>';
+            return '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            |'.
+        \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
+        \Form::button('<i class="fa fa-times"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
+        \Form::close();
         })
         ->editColumn('created_at', function ($posts) {
             return $posts->created_at->format('Y/m/d');
@@ -130,7 +133,8 @@ class BlogController extends BackendController
      */
     public function edit($id)
     {
-        dd('edit');
+       $post = Post::findOrFail($id);
+       return view("backend.blog.edit", compact('post'));
     }
 
     /**
@@ -142,7 +146,10 @@ class BlogController extends BackendController
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $data = $this->handleRequest($request);
+        $post->update($data);
+        return redirect('/backend/blog')->with('message', "Post was Updated");
     }
 
     /**
@@ -153,6 +160,7 @@ class BlogController extends BackendController
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+        return redirect('/backend/blog')->with('message','Your post was deleted successfully!');
     }
 }
