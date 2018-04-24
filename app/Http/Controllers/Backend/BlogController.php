@@ -22,44 +22,88 @@ class BlogController extends BackendController
     {
         parent::__construct();
         $this->uploadPath = public_path(config('cms.image.directory'));
+        $this->limit = 10;
     } 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
-        return view("backend.blog.index",compact('posts'));
+        if (($status = $request->get('status')) && $status == 'trash')
+        {
+            $posts = Post::onlyTrashed()->with('category','author')->latestFirst()->paginate($this->limit);
+            $postCount = Post::onlyTrashed()->count();
+        }
+        else
+        {
+            $posts = Post::with('category','author')->latestFirst()->paginate($this->limit);
+            $postCount = Post::count();
+            $onlyTrashed = FALSE;
+        }
+        //$posts = Post::all();
+        return view("backend.blog.index",compact('posts','postCount','onlyTrashed'));
     }
     
-    public function getPosts()
+    public function getPosts(Request $request)
     {
-        $posts = Post::with('author','category')
-        ->latestFirst();
-        return \DataTables::of($posts)
-        ->addColumn('action', function ($posts) {
-            return '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-            |'.
-        \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
-        \Form::button('<i class="fa fa-times"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
-        \Form::close();
-        })
-        ->editColumn('created_at', function ($posts) {
-            return $posts->created_at->format('Y/m/d');
-        })
-        ->addColumn('status', function ($posts) {
-            if (! $posts->published_at){
-                return 'Draft';
-            }
-            elseif ($posts->published_at && $posts->published_at->isFuture())
-            {
-                return 'Schedule';
-            }
-            else 
-            {
-                return 'published';
-            }
-        })
-        ->editColumn('id', 'ID: {{$id}}')
-        ->removeColumn('password')
-        ->make(true);
+        if (($status = $request->get('status')) && $status == 'trash')
+        {
+            $posts = Post::onlyTrashed()->with('category','author')
+            ->latestFirst();
+            return \DataTables::of($posts)
+            ->addColumn('action', function ($posts) {
+                return 
+                    \Form::open(array('style' => 'display:inline-block;','method'=>'PUT', 'route' => array('backend.blog.restore',"$posts->id"))) .
+                    \Form::button('<i class="fa fa-refresh"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-default')) .
+                    \Form::close() .
+                    ' | '.
+                    \Form::open(array('style' => 'display:inline-block;','method'=>'DELETE', 'route' => array('backend.blog.force-destroy',"$posts->id"))) .
+                    \Form::button('<i class="fa fa-times"></i>' , array('type' => 'submit','class'=>'btn btn-xs btn-danger','onclick'=>"return confirm('Are You sure to detele a post permanently?')")) .
+                    \Form::close();
+            })
+            ->editColumn('created_at', function ($posts) {
+                return $posts->created_at->format('Y/m/d');
+            })
+            ->addColumn('status', function ($posts) {
+                'Trashed';
+            })
+            ->editColumn('id', 'ID: {{$id}}')
+            ->removeColumn('password')
+            ->make(true);
+        }
+        else
+        {
+            $onlyTrashed = FALSE;
+            $posts = Post::with('category','author')
+            ->latestFirst();
+            return \DataTables::of($posts)
+            ->addColumn('action', function ($posts) {
+                return 
+            \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
+            '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                | ' .
+            \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
+            \Form::close();
+            })
+            ->editColumn('created_at', function ($posts) {
+                return $posts->created_at->format('Y/m/d');
+            })
+            ->addColumn('status', function ($posts) {
+                if (! $posts->published_at){
+                    return 'Draft';
+                }
+                elseif ($posts->published_at && $posts->published_at->isFuture())
+                {
+                    return 'Schedule';
+                }
+                else 
+                {
+                    return 'published';
+                }
+            })
+            ->editColumn('id', 'ID: {{$id}}')
+            ->removeColumn('password')
+            ->make(true);
+        }
+        //$posts = Post::with('author','category')
+        
     }
 
     /**
@@ -161,6 +205,19 @@ class BlogController extends BackendController
     public function destroy($id)
     {
         Post::findOrFail($id)->delete();
-        return redirect('/backend/blog')->with('message','Your post was deleted successfully!');
+        return redirect('/backend/blog')->with('trash-message',['Your post moved to trash!',$id]);
+    }
+
+    public function forceDestroy($id)
+    {
+        Post::withTrashed()->findOrFail($id)->forceDelete();
+        return redirect('backend/blog')->with('message',' Your Post has been deleted successfully!');
+    }
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->findOrFail($id);
+        $post->restore();
+
+        return redirect('/backend/blog')->with('message',"Restore Successfuly!");        
     }
 }

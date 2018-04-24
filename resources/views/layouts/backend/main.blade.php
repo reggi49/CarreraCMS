@@ -98,11 +98,15 @@
 <!-- ./wrapper -->
 @yield('scripts')
 <script>
- $(document).ready(function() {
-    $('.datatable').DataTable({
+        var oTable = $('.datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{ route('datatable/getdata') }}',
+        ajax: {
+            url: '{{ route('datatable/getdata') }}',
+            data: function (d) {
+                d.status = $('select[name=status]').val();
+            }
+        },
         columns: [
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'title', name: 'title'},
@@ -112,7 +116,11 @@
             {data: 'status', name: 'status'}
         ]
     });
-});
+    $('select').on('change', function(e) {
+        // alert(this.value);
+        oTable.draw();
+        e.preventDefault();
+    });
 </script>
 </body>
 </html>

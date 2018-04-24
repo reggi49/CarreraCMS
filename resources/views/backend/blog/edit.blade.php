@@ -24,7 +24,7 @@
                 'files' => TRUE,
                 'id' => 'post-form',
             ]) !!}
-        @include('backend.blog.form');
+        @include('backend.blog.form')
         {!! Form::close() !!}
       <!-- /.row -->
     </section>
@@ -32,4 +32,4 @@
   </div>
   <!-- /.content-wrapper -->
 @endsection
-@include('backend.blog.scripts');
+@include('backend.blog.scripts')
