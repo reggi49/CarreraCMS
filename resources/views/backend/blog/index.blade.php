@@ -21,14 +21,13 @@
           <div class="box">
             <div class="box-header clearfix">
               <div class="pull-right">
-                    <select name="status" id="status" class="form-control">
-                        <option value="all">All</option>
-                        <option value="trash">Trash</option>
-                        <option value=">">&gt;</option>
-                        <option value="<">&lt;</option>
-                    </select>
-                    {{-- <a href="?status=all"><i class="fa fa-newspaper-o"></i> All</a> |
-                    <a href="?status=trash"><i class="fa fa-trash-o"></i> Trash</a> --}}
+                <select name="status" id="status" class="form-control">
+                @foreach($statusList as $key => $value)
+                    <?php echo "<option value = \"{$key}\">$key({$value})</option>" ?>
+                @endforeach
+                </select>
+                {{-- <a href="?status=all"><i class="fa fa-newspaper-o"></i> All</a> |
+                <a href="?status=trash"><i class="fa fa-trash-o"></i> Trash</a> --}}
                 </div>
               <div class="pull-left">
               {{-- <h1 class="box-title" style="padding-right:10px;">Posts</h1> --}}
