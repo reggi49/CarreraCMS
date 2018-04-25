@@ -2,7 +2,7 @@
           <div class="box">
             <div class="box-header">
               <h1 class="box-title" style="padding-right:10px;">Create Post</h1>
-                {{-- <a href="{{ route('backend.blog.create')}}" class="btn btn-success">Add New Post</a> --}}
+                {{-- <a href="{{ route('blog.create')}}" class="btn btn-success">Add New Post</a> --}}
             </div>
 
             <!-- /.box-header -->

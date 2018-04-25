@@ -40,9 +40,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('backend.blog.index')}}"><i class="fa fa-circle-o"></i> Semua Posts</a></li>
-            <li><a href="{{ route('backend.blog.create')}}"><i class="fa fa-circle-o"></i> Tambah Baru</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Konsep</a></li>
+            <li><a href="{{ route('blog.index')}}"><i class="fa fa-circle-o"></i> Semua Posts</a></li>
+            <li><a href="{{ route('blog.create')}}"><i class="fa fa-circle-o"></i> Tambah Baru</a></li>
+            <li><a href="{{ route('categories.index')}}"><i class="fa fa-circle-o"></i> Kategori</a></li>
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Posts Terjadwal</a></li>
           </ul>
         </li>

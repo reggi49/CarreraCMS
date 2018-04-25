@@ -43,9 +43,8 @@ Route::delete('/backend/blog/force-destroy/{blog}',[
     'as' => 'backend.blog.force-destroy'
     ]);
 //Route::resource('/backend/blog', 'Backend\BlogController');
-Route::resource('/backend/blog', 'Backend\BlogController', [
-    'as' => 'backend'
-]);
+Route::resource('/backend/blog', 'Backend\BlogController');
+Route::resource('/backend/categories', 'Backend\CategoriesController');
 
 // Get Data Datatables
 Route::get('datatable/getdata', 'Backend\BlogController@getPosts')->name('datatable/getdata');

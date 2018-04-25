@@ -22,7 +22,6 @@ class BlogController extends BackendController
     {
         parent::__construct();
         $this->uploadPath = public_path(config('cms.image.directory'));
-        $this->limit = 10;
     } 
     public function index(Request $request)
     {
@@ -53,11 +52,11 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('style' => 'display:inline-block;','method'=>'PUT', 'route' => array('backend.blog.restore',"$posts->id"))) .
+                    \Form::open(array('style' => 'display:inline-block;','method'=>'PUT', 'route' => array('blog.restore',"$posts->id"))) .
                     \Form::button('<i class="fa fa-refresh"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-default')) .
                     \Form::close() .
                     ' | '.
-                    \Form::open(array('style' => 'display:inline-block;','method'=>'DELETE', 'route' => array('backend.blog.force-destroy',"$posts->id"))) .
+                    \Form::open(array('style' => 'display:inline-block;','method'=>'DELETE', 'route' => array('blog.force-destroy',"$posts->id"))) .
                     \Form::button('<i class="fa fa-times"></i>' , array('type' => 'submit','class'=>'btn btn-xs btn-danger','onclick'=>"return confirm('Are You sure to detele a post permanently?')")) .
                     \Form::close();
             })
@@ -78,7 +77,7 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
+                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
                     '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                         | ' .
                     \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
@@ -111,7 +110,7 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
+                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
                     '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                         | ' .
                     \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
@@ -144,7 +143,7 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
+                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
                     '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                         | ' .
                     \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
@@ -177,7 +176,7 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
+                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
                     '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                         | ' .
                     \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .

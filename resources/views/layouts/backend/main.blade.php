@@ -76,14 +76,14 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('backend-assets/js/adminlte.min.js') }}"></script>
 <!-- Sparkline -->
-<script src="{{ asset('backend-assets/js/jquery.sparkline.min.js') }}"></script>
+{{-- <script src="{{ asset('backend-assets/js/jquery.sparkline.min.js') }}"></script> --}}
 <!-- jvectormap  -->
 {{-- <script src="{{ asset('backend-assets/js/jquery-jvectormap-1.2.2.min.js') }}"></script>
 <script src="{{ asset('backend-assets/js/jquery-jvectormap-world-mill-en.js') }}"></script> --}}
 <!-- SlimScroll -->
 <script src="{{ asset('backend-assets/js/jquery.slimscroll.min.js') }}"></script>
 <!-- ChartJS -->
-<script src="{{ asset('backend-assets/js/Chart.min.js') }}"></script>
+{{-- <script src="{{ asset('backend-assets/js/Chart.min.js') }}"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment-with-locales.min.js"></script>
 {{-- Bootstrap DatePicker --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
