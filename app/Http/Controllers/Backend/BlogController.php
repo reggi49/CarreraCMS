@@ -52,11 +52,11 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('style' => 'display:inline-block;','method'=>'PUT', 'route' => array('blog.restore',"$posts->id"))) .
+                    \Form::open(array('style' => 'display:inline-block;','method'=>'PUT', 'route' => array('backend.blog.restore',"$posts->id"))) .
                     \Form::button('<i class="fa fa-refresh"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-default')) .
                     \Form::close() .
                     ' | '.
-                    \Form::open(array('style' => 'display:inline-block;','method'=>'DELETE', 'route' => array('blog.force-destroy',"$posts->id"))) .
+                    \Form::open(array('style' => 'display:inline-block;','method'=>'DELETE', 'route' => array('backend.blog.force-destroy',"$posts->id"))) .
                     \Form::button('<i class="fa fa-times"></i>' , array('type' => 'submit','class'=>'btn btn-xs btn-danger','onclick'=>"return confirm('Are You sure to detele a post permanently?')")) .
                     \Form::close();
             })
