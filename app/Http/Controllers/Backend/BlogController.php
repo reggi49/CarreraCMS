@@ -37,7 +37,7 @@ class BlogController extends BackendController
             $onlyTrashed = FALSE;
         }
         //$posts = Post::all();
-        $statusList = $this->statusList();
+        $statusList = $this->statusList($request);
         return view("backend.blog.index",compact('posts','postCount','onlyTrashed','statusList'));
     }
     
@@ -169,6 +169,39 @@ class BlogController extends BackendController
             ->removeColumn('password')
             ->make(true);
         }
+        elseif($status == 'own')
+        {
+           $posts = $request->user()->posts()->with('category','author')
+            ->latestFirst();
+            return \DataTables::of($posts)
+            ->addColumn('action', function ($posts) {
+                return 
+                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
+                    '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                        | ' .
+                    \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
+                    \Form::close();
+            })
+            ->editColumn('created_at', function ($posts) {
+                return $posts->created_at->format('Y/m/d');
+            })
+            ->addColumn('status', function ($posts) {
+                if (! $posts->published_at){
+                    return 'Draft';
+                }
+                elseif ($posts->published_at && $posts->published_at->isFuture())
+                {
+                    return 'Schedule';
+                }
+                else 
+                {
+                    return 'published';
+                }
+            })
+            ->editColumn('id', 'ID: {{$id}}')
+            ->removeColumn('password')
+            ->make(true);
+        }
         else
         {
             $posts = Post::with('category','author')
@@ -206,10 +239,11 @@ class BlogController extends BackendController
         
     }
 
-    private function statusList()
+    private function statusList($request)
     {
         return [
             'all'   => Post::count(),
+            'own'   => $request->user()->posts()->count(),            
             'published'   => Post::published()->count(),
             'scheduled'   => Post::scheduled()->count(),
             'draft'   => Post::draft()->count(),

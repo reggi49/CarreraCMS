@@ -227,20 +227,13 @@
 
                 <p>
                   {{ Auth::user()->name}}
-                  {{-- <small>Member since Nov. 2012</small> --}}
                 </p>
               </li>
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                  <div class="col-xs-12 text-center">
+                    <a href="#">Role : {{ Auth::user()->roles->first()->display_name}}</a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -248,7 +241,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ route('users.edit', Auth::user()->id) }}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                     <a href="{{ route('logout') }}" class="btn btn-default btn-flat"

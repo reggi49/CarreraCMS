@@ -52,9 +52,9 @@
 
     <div class="social-auth-links text-center">
       <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-eye"></i> Sign in using
         Retina</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-hand-pointer-o"></i> Sign in using
         Fingerprint</a>
     </div>
     <!-- /.social-auth-links -->

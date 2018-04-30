@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <p class="copyright">&copy; 2016 Edo Masaru</p>
+                <p class="copyright"><strong>Copyright &copy; <?php echo date("Y"); ?> <a href="https://mbtech.info">Mbtech - Build with <i class="fa fa-heart"></i></a>.</strong> All rights</p>
             </div>
             <div class="col-md-4">
                 <nav>

@@ -55,7 +55,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 0.1
     </div>
-    <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="https://mbtech.info">Reggi - Build with <i class="fa fa-heart"></i></a>.</strong> All rights
+    <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="https://mbtech.info">Mbtech - Build with <i class="fa fa-heart"></i></a>.</strong> All rights
     reserved.
   </footer>
 

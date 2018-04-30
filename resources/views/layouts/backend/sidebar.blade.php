@@ -42,10 +42,19 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('blog.index')}}"><i class="fa fa-circle-o"></i> Semua Posts</a></li>
             <li><a href="{{ route('blog.create')}}"><i class="fa fa-circle-o"></i> Tambah Baru</a></li>
-            <li><a href="{{ route('categories.index')}}"><i class="fa fa-circle-o"></i> Kategori</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Posts Terjadwal</a></li>
+            {{-- <li><a href="{{ route('categories.index')}}"><i class="fa fa-circle-o"></i> Kategori</a></li> --}}
           </ul>
         </li>
+        @if (check_user_permissions(request(), "Categories@index"))
+        <li>
+          <a href="{{ route('categories.index')}}">
+            <i class="fa fa-server"></i> <span>Kategori</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">new</small> --}}
+            </span>
+          </a>
+        </li>
+        @endif
         <li>
           <a href="pages/widgets.html">
             <i class="ion ion-ios-pricetag-outline"></i> <span>Tag</span>
@@ -74,6 +83,16 @@
             </span>
           </a>
         </li>
+        @if(check_user_permissions(request(),"Users@index"))
+        <li>
+          <a href="{{ route('users.index')}}">
+            <i class="fa fa-users"></i> <span>Users</span>
+            <span class="pull-right-container">
+              {{-- <small class="label pull-right bg-green">3</small> --}}
+            </span>
+          </a>
+        </li>
+        @endif
       </ul>
     </section>
     <!-- /.sidebar -->

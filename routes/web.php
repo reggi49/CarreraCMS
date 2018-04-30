@@ -42,9 +42,15 @@ Route::delete('/backend/blog/force-destroy/{blog}',[
     'uses' => 'backend\BlogController@forceDestroy',
     'as' => 'backend.blog.force-destroy'
     ]);
-//Route::resource('/backend/blog', 'Backend\BlogController');
+
+Route::get('/backend/users/confirm/{users}',[
+    'uses' => 'backend\UsersController@confirm',
+    'as' => 'backend.users.confirm'
+    ]);
+
 Route::resource('/backend/blog', 'Backend\BlogController');
 Route::resource('/backend/categories', 'Backend\CategoriesController');
+Route::resource('/backend/users', 'Backend\UsersController');
 
 // Get Data Datatables
 Route::get('datatable/getdata', 'Backend\BlogController@getPosts')->name('datatable/getdata');
