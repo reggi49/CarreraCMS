@@ -102,10 +102,22 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function commentsNumber($label = 'Comment')
+    {
+        $commentsNumber = $this->comments->count();
+        return $commentsNumber. " ". str_plural('Comment', $commentsNumber);
+    }
+
+    public function createComment(array $data)
+    {
+        $this->comments()->create($data);
+    }
+
     public function setPublishedAttribute($value)
     {
         $this->attributes['published_at'] = $value ?: NULL;
     }
+
     public function getDateAttribute($value)
     {
         return is_null($this->published_at)? '': $this->published_at->diffForHumans();
