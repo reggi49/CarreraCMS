@@ -54,6 +54,15 @@ class Post extends Model
         return $this->excerpt ? Markdown::convertToHtml(e($this->excerpt)) : NULL;
     }
 
+    public function getTagsHtmlAttribute()
+    {
+        $anchors = [];
+        foreach($this->tags as $tag){
+            $anchors[] = '<a href=" '.route('tag', $tag->slug).'">' .$tag->name. '</a>';
+        }
+        return implode(",",$anchors);
+    }
+                                            
     public function dateFormated($showTimes=false)
     {
         \Carbon\Carbon::setLocale('id');
@@ -82,6 +91,16 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     } 
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
     public function setPublishedAttribute($value)
     {
@@ -113,5 +132,36 @@ class Post extends Model
     public function scopeDraft($query)
     {
         return $query->whereNull("published_at");
+    }
+    public function scopeFilter($query,$filter)
+    {
+        if (isset($filter['month']) && $month = $filter['month']){
+            $query->whereRaw('month(published_at) = ?', [Carbon::parse($month)->month]);
+        }
+        if (isset($filter['year']) && $year = $filter['year']){
+            $query->whereRaw('year(published_at) = ?', $year);
+        }
+        //check if any term entered
+        if(isset($filter['term']) && $term = $filter['term']){
+            $query->where(function($q) use ($term){
+                $q->whereHas('author', function($qr) use ($term){
+                    $qr->where('name','LIKE', "%{$term}%");
+                });
+                // $q->orWhereHas('category', function($qr) use ($term){
+                //     $qr->where('title','LIKE', "%{$term}%");
+                // });
+                $q->orWhere('title','LIKE',"%{$term}%");
+                $q->orWhere('body','LIKE',"%{$term}%");
+            });
+        }
+    }
+
+    public static function archives()
+    {
+         return static::selectRaw('count(id) as post_count, year(published_at) year, monthname(published_at) month')
+                        ->published()
+                        ->groupBy('year', 'month')
+                        ->orderByRaw('min(published_at) desc')
+                        ->get();
     }
 }

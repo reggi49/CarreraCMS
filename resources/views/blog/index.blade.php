@@ -4,22 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                
                 @if(!$posts->count())
                 <div class="alert alert-warning">
                     <p>Tidak Ada Artikel Tersedia</p>
                 </div>
                 @else
-                    @if(isset($categoryName))
-                        <div class ="alert alert-info".
-                            <p>Category: <strong> {{$categoryName}}</strong></p>
-                        </div>
-                    @endif
-                    @if(isset($authorName))
-                        <div class ="alert alert-info".
-                            <p>Author: <strong> {{$authorName}}</strong></p>
-                        </div>
-                    @endif
+                @include('blog.alert')
+                
                 @foreach($posts as $post)
                     <article class="post-item">
                         <div class="post-item-image">
@@ -38,7 +29,10 @@
                                     <ul class="post-meta-group">
                                         <li><i class="fa fa-user"></i><a href="{{ route('author', $post->author->slug)}}"> {{ $post->author->name }}</a></li>
                                         <li><i class="fa fa-clock-o"></i><time> {{ $post->date }}</time></li>
-                                    <li><i class="fa fa-folder"></i><a href="{{ route('category', $post->category->slug) }}"> {{ $post->category->title }}</a></li>
+                                        <li><i class="fa fa-folder"></i><a href="{{ route('category', $post->category->slug) }}"> {{ $post->category->title }}</a></li>
+                                        <li><i class="fa fa-tag"></i>
+                                            {!! $post->tags_html !!}
+                                        </li>
                                         <li><i class="fa fa-comments"></i><a href="#">4 Comments</a></li>
                                     </ul>
                                 </div>
@@ -52,7 +46,7 @@
                 @endif
 
                 <nav>
-                  {{ $posts->links() }}
+                  {{ $posts->appends(request()->only(['term']))->links() }}
                 </nav>
             </div>
             @include('layouts.sidebar')

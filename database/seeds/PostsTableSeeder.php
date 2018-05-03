@@ -18,7 +18,7 @@ class PostsTableSeeder extends Seeder
         $posts = [];
         $date = Carbon::create(2017, 4, 3, 9);
 
-        for($i=1;$i<=10;$i++)
+        for($i=1;$i<=36;$i++)
         {
             $image = "Post_Image_".rand(1,5).".jpg";
             $date->addDays($i);
@@ -34,7 +34,7 @@ class PostsTableSeeder extends Seeder
                 'image' => rand(0,1) == 1? $image:NULL,
                 'created_at' => $createdDate,
                 'updated_at' => $createdDate,
-                'published_at' => $i > 5 ?$publishedDate : (rand(0,1) == 0 ? null : $publishedDate->addDays($i+4)),
+                'published_at' => $i > 36 ?$publishedDate : (rand(0,1) == 0 ? null : $publishedDate->addDays($i+4)),
                 'view_count' => rand(1,10)*10,
             ];
         }
