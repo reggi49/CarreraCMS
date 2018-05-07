@@ -59,9 +59,9 @@ Route::get('/backend/users/confirm/{users}',[
     'as' => 'backend.users.confirm'
     ]);
 
-Route::resource('/backend/blog', 'Backend\BlogController');
-Route::resource('/backend/categories', 'Backend\CategoriesController');
-Route::resource('/backend/users', 'Backend\UsersController');
+Route::resource('/backend/blog', 'Backend\BlogController',['as' => 'backend']);
+Route::resource('/backend/categories', 'Backend\CategoriesController',['as' => 'backend']);
+Route::resource('/backend/users', 'Backend\UsersController',['as' => 'backend']);
 
 // Get Data Datatables
 Route::get('datatable/getdata', 'Backend\BlogController@getPosts')->name('datatable/getdata');

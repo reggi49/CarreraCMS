@@ -77,7 +77,7 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
+                    \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
                     '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                         | ' .
                     \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
@@ -110,7 +110,7 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
+                    \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
                     '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                         | ' .
                     \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
@@ -143,7 +143,7 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
+                    \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
                     '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                         | ' .
                     \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
@@ -176,7 +176,7 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
+                    \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
                     '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                         | ' .
                     \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
@@ -209,7 +209,7 @@ class BlogController extends BackendController
             return \DataTables::of($posts)
             ->addColumn('action', function ($posts) {
                 return 
-                    \Form::open(array('method'=>'DELETE', 'route' => array('blog.destroy',"$posts->id"))) .
+                    \Form::open(array('method'=>'DELETE', 'route' => array('backend.blog.destroy',"$posts->id"))) .
                     '<a href="blog/'.$posts->id.'/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                         | ' .
                     \Form::button('<i class="fa fa-trash"></i>', array('type' => 'submit','class'=>'btn btn-xs btn-danger')) .
@@ -271,7 +271,9 @@ class BlogController extends BackendController
     public function store(Requests\PostRequest $request)
     {
             $data = $this->handleRequest($request);
-            $request->user()->posts()->create($data );
+            $newPost = $request->user()->posts()->create($data );
+            $newPost->createTags($data["post_tags"]);
+
             return redirect('/backend/blog')->with('message','The post was created successfuly');
     }
 
@@ -339,6 +341,7 @@ class BlogController extends BackendController
         $oldImage = $post->image;
         $data = $this->handleRequest($request);
         $post->update($data);
+        $post->createTags($data['post_tags']);
 
         if($oldImage !== $post->image){
             $this->removeImage($oldImage);

@@ -31,7 +31,7 @@
                 </div>
               <div class="pull-left">
               {{-- <h1 class="box-title" style="padding-right:10px;">Posts</h1> --}}
-                <a href="{{ route('blog.create')}}" class="btn btn-success"><i class="fa fa-pencil"></i> Add New Post</a>               
+                <a href="{{ route('backend.blog.create')}}" class="btn btn-success"><i class="fa fa-pencil"></i> Add New Post</a>               
               </div>
             </div>
             

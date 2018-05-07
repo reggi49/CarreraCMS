@@ -10,7 +10,7 @@
       </h1>
       <ol class="breadcrumb">
       <li><a href="{{ url('/home')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class=""><a href="{{ route('blog.index')}}">Posts</a></li>
+      <li class=""><a href="{{ route('backend.blog.index')}}">Posts</a></li>
         <li class="active"><a href="#">Add New Posts</a></li>
       </ol>
     </section>
@@ -20,7 +20,7 @@
       <div class="row">
         {!! Form::model($post,[
                 'method' => 'POST',
-                'route' => 'blog.store',
+                'route' => 'backend.blog.store',
                 'files' => TRUE,
                 'id' => 'post-form',
             ]) !!}

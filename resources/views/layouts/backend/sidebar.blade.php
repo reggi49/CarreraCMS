@@ -40,14 +40,14 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('blog.index')}}"><i class="fa fa-circle-o"></i> Semua Posts</a></li>
-            <li><a href="{{ route('blog.create')}}"><i class="fa fa-circle-o"></i> Tambah Baru</a></li>
+            <li><a href="{{ route('backend.blog.index')}}"><i class="fa fa-circle-o"></i> Semua Posts</a></li>
+            <li><a href="{{ route('backend.blog.create')}}"><i class="fa fa-circle-o"></i> Tambah Baru</a></li>
             {{-- <li><a href="{{ route('categories.index')}}"><i class="fa fa-circle-o"></i> Kategori</a></li> --}}
           </ul>
         </li>
         @if (check_user_permissions(request(), "Categories@index"))
         <li>
-          <a href="{{ route('categories.index')}}">
+          <a href="{{ route('backend.categories.index')}}">
             <i class="fa fa-server"></i> <span>Kategori</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
@@ -85,7 +85,7 @@
         </li>
         @if(check_user_permissions(request(),"Users@index"))
         <li>
-          <a href="{{ route('users.index')}}">
+          <a href="{{ route('backend.users.index')}}">
             <i class="fa fa-users"></i> <span>Users</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">3</small> --}}

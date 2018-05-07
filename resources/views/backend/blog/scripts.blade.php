@@ -1,6 +1,26 @@
+@section('style')
+    <link rel="stylesheet" href="{{ asset('backend-assets/plugins/tagEditor/jquery.tag-editor.css')}}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+@endsection
+
 @section('scripts')
-{{-- Slug Automatically --}}
-  <script type="text/javascript">
+<script src="{{ asset('backend-assets/plugins/tagEditor/jquery.caret.min.js')}}"></script>
+<script src="{{ asset('backend-assets/plugins/tagEditor/jquery.tag-editor.min.js')}}"></script>
+<script type="text/javascript">
+    var options = {};
+        options = {
+            initialTags: {!! $post->tags_list !!},
+            autocomplete: {
+                delay: 0, // show suggestions immediately
+                position: { collision: 'flip' }, // automatic menu position up/down
+                source: {!! $post->tags_all !!},
+            },
+            forceLowercase: false,
+        }
+    $('input[name=post_tags]').tagEditor(options);
+
+    // Slug Automatically
+
     $('#title').on('blur',function(){
         var theTitle = this.value.toLowerCase().trim(),
         slugInput = $('#slug'),
@@ -25,7 +45,7 @@
 
     </script>
 {{-- E:Slug Automatically --}}
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{ asset('backend-assets/js/tinymce/jquery.tinymce.min.js')}}"></script>
 <script src="{{ asset('backend-assets/js/tinymce/tinymce.min.js')}}"></script>
 <script>
