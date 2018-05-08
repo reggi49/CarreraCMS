@@ -1,6 +1,6 @@
 @extends('layouts.backend.main')
 
-@section('title', 'MyBlog | Add new category')
+@section('title', 'MyBlog | Add new tag')
 
 @section('content')
 
@@ -8,14 +8,14 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Categories
-          <small>Add new category</small>
+          Tags
+          <small>Add new Tag</small>
         </h1>
         <ol class="breadcrumb">
           <li>
-              <a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
+              <a href="{{ url('backend/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li>
-          <li><a href="{{ route('backend.categories.index') }}">Categories</a></li>
+          <li><a href="{{ route('backend.tags.index') }}">Tags</a></li>
           <li class="active">Add new</li>
         </ol>
       </section>
@@ -23,14 +23,14 @@
       <!-- Main content -->
       <section class="content">
           <div class="row">
-              {!! Form::model($category, [
+              {!! Form::model($tag, [
                   'method' => 'POST',
-                  'route'  => 'backend.categories.store',
+                  'route'  => 'backend.tags.store',
                   'files'  => TRUE,
-                  'id' => 'category-form'
+                  'id' => 'tag-form'
               ]) !!}
 
-              @include('backend.categories.form')
+              @include('backend.tags.form')
 
             {!! Form::close() !!}
           </div>
@@ -39,4 +39,4 @@
       <!-- /.content -->
     </div>
 @endsection
-@include('backend.categories.scripts')
+@include('backend.tags.scripts')

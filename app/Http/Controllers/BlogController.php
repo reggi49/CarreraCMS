@@ -73,7 +73,7 @@ class BlogController extends Controller
         //$post = Post::published()->findOrFail($id);
 
         $postComments = $post->comments()->simplePaginate(3);
-        
+        //dd($post);
         $post->increment('view_count');
         return view("blog.show", compact('post','postComments'));
     }

@@ -1,6 +1,6 @@
 @extends('layouts.backend.main')
 
-@section('title', 'MyBlog | Categories')
+@section('title', 'MyBlog | Tags')
 
 @section('content')
 
@@ -8,15 +8,15 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Categories
-          <small>Display All categories</small>
+          Tags
+          <small>Display All Tags</small>
         </h1>
         <ol class="breadcrumb">
           <li>
               <a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li>
-          <li><a href="{{ route('backend.categories.index') }}">Categories</a></li>
-          <li class="active">All categories</li>
+          <li><a href="{{ route('backend.tags.index') }}">Tags</a></li>
+          <li class="active">All Tags</li>
         </ol>
       </section>
 
@@ -27,7 +27,7 @@
               <div class="box">
                 <div class="box-header clearfix">
                     <div class="pull-left">
-                        <a href="{{ route('backend.categories.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Add New</a>
+                        <a href="{{ route('backend.tags.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Add New</a>
                     </div>
                     <div class="pull-right">
                     </div>
@@ -36,21 +36,21 @@
                 <div class="box-body ">
                     @include('backend.partials.message')
 
-                    @if (! $categories->count())
+                    @if (! $tags->count())
                         <div class="alert alert-danger">
                             <strong>No record found</strong>
                         </div>
                     @else
-                        @include('backend.categories.table')
+                        @include('backend.tags.table')
                     @endif
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer clearfix">
                     <div class="pull-left">
-                        {{ $categories->appends( Request::query() )->render() }}
+                        {{ $tags->appends( Request::query() )->render() }}
                     </div>
                     <div class="pull-right">
-                        <small>{{ $categoriesCount }} {{ str_plural('Item', $categoriesCount) }}</small>
+                        <small>{{ $tagsCount }} {{ str_plural('Item', $tagsCount) }}</small>
                     </div>
                 </div>
               </div>

@@ -19,8 +19,8 @@
         }
     $('input[name=post_tags]').tagEditor(options);
 
-    // Slug Automatically
-
+    // Slug Automatically @if(!$post->exists)
+    
     $('#title').on('blur',function(){
         var theTitle = this.value.toLowerCase().trim(),
         slugInput = $('#slug'),
@@ -31,6 +31,8 @@
 
         slugInput.val(theSlug);
     });
+    //@endif
+
     $('#datetimepicker1').datetimepicker({
         defaultDate: new Date(),
         format: 'YYYY-MM-DD HH:mm:ss',

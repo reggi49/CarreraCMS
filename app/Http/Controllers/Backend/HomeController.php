@@ -21,4 +21,9 @@ class HomeController extends BackendController
     {
         return view('backend.home');
     }
+
+    public function media()
+    {
+        return view('backend.partials.media');
+    }
 }

@@ -27,7 +27,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="">
-          <a href="{{url('/home')}}">
+          <a href="{{url('backend/home')}}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
@@ -56,15 +56,15 @@
         </li>
         @endif
         <li>
-          <a href="pages/widgets.html">
+          <a href="{{ route('backend.tags.index')}}">
             <i class="ion ion-ios-pricetag-outline"></i> <span>Tag</span>
             <span class="pull-right-container">
               {{-- <small class="label pull-right bg-green">new</small> --}}
             </span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li>
+          <a href="{{ url('backend/media')}}">
             <i class="fa fa-folder-open"></i>
             <span>Media</span>
           </a>
