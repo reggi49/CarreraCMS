@@ -99,12 +99,13 @@ class Post extends Model
     
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->whereNotNull('updated_at');
     }
 
     public function commentsNumber($label = 'Comment')
     {
         $commentsNumber = $this->comments->count();
+
         return $commentsNumber. " ". str_plural('Comment', $commentsNumber);
     }
 
@@ -137,6 +138,12 @@ class Post extends Model
     {
         return $query->where("published_at","<=",Carbon::now());
     }
+    
+    public function scopePublishedComment($query)
+    {
+        return $query->whereNull("published_at");
+    }
+
     public function scopeScheduled($query)
     {
         return $query->where("published_at",">",Carbon::now());

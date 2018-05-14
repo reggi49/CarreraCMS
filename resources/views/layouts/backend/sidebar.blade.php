@@ -75,8 +75,8 @@
             <span>Laman</span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li>
+          <a href="{{ route('backend.comments.index')}}">
             <i class="fa fa-comments"></i> <span>Komentar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">3</small>

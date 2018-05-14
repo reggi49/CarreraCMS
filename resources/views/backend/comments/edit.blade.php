@@ -1,6 +1,6 @@
 @extends('layouts.backend.main')
 
-@section('title', 'MyBlog | Edit User')
+@section('title', 'MyBlog | Edit category')
 
 @section('content')
 
@@ -8,29 +8,29 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Users
-          <small>Edit User</small>
+          Categories
+          <small>Edit category</small>
         </h1>
         <ol class="breadcrumb">
           <li>
               <a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li>
-          <li><a href="{{ route('backend.users.index') }}">Users</a></li>
-          <li class="active">Edit User</li>
+          <li><a href="{{ route('backend.categories.index') }}">Categories</a></li>
+          <li class="active">Edit Category</li>
         </ol>
       </section>
 
       <!-- Main content -->
       <section class="content">
           <div class="row">
-              {!! Form::model($user, [
+              {!! Form::model($category, [
                   'method' => 'PUT',
-                  'route'  => ['backend.users.update', $user->id],
+                  'route'  => ['backend.categories.update', $category->id],
                   'files'  => TRUE,
-                  'id' => 'user-form'
+                  'id' => 'post-form'
               ]) !!}
 
-              @include('backend.users.form')
+              @include('backend.categories.form')
 
             {!! Form::close() !!}
           </div>
@@ -40,3 +40,5 @@
     </div>
 
 @endsection
+
+@include('backend.categories.scripts')

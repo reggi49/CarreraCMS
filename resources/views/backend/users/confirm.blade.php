@@ -13,7 +13,7 @@
         </h1>
         <ol class="breadcrumb">
           <li>
-              <a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
+              <a href="{{ url('backend/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li>
           <li><a href="{{ route('backend.users.index') }}">Users</a></li>
           <li class="active">Delete Confirmation</li>

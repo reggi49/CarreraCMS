@@ -11,11 +11,11 @@ class CommentsController extends Controller
 {
     public function store(Post $post, CommentStoreRequest $request)
     {
-        // $data = $request->all();
-        // $data['post_id'] = $post->id;
+        $data = $request->all();
+        $data['updated_at'] = null;
 
         // Comment::create($data);
-        $post->createComment($request->all());
+        $post->createComment($data);
 
         return redirect()->back()->with('message', "Your comment successfuly send.");
     }

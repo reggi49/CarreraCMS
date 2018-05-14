@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use Intervention\Image\Facades\Image;
 
 class UsersController extends BackendController
 {
@@ -14,6 +15,14 @@ class UsersController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
+    protected $uploadPath;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->uploadPath = public_path(config('cms.image.directory'));
+    }
+
     public function index()
     {
         $users = User::orderBy('name')->paginate($this->limit);
@@ -41,14 +50,43 @@ class UsersController extends BackendController
      */
     public function store(Requests\UserStoreRequest $request)
     {
-        User::create($request->all());
-        $user->attachRole($request->role);
-
+        $data = $this->handleRequest($request);
         $data['password'] = bcrypt($data['password']);
-        User::create($data);
+        $newUser = $request->user()->create($data);
+        $newUser->attachRole($request->role);
+
+        //User::create($passwd);
         return redirect("/backend/users")->with("message", "New user was created successfuly!");
     }
 
+    private function handleRequest($request)
+    {
+        $data = $request->all();
+
+        if($request->hasFile('avatar'))
+        {
+            $image = $request->file('avatar');
+            $fileName = time().'-'.$image->getClientOriginalName();
+            $destination = $this->uploadPath;
+
+            $successUploaded = $image->move($destination, $fileName);
+
+            if ($successUploaded)
+            {
+                $width = config('cms.image.thumbnail.width');
+                $height = config('cms.image.thumbnail.height');
+                $extension = $image->getClientOriginalExtension();
+                $thumbnail = str_replace(".{$extension}","_thumb.{$extension}",$fileName);
+
+                Image::make($destination.'/'.$fileName)
+                    ->resize($width,$height)
+                    ->save($destination.'/'.$thumbnail);
+            }
+            $data['avatar'] = $fileName;
+        }
+
+        return $data;
+    }
     /**
      * Display the specified resource.
      *
@@ -116,6 +154,6 @@ class UsersController extends BackendController
         $user = User::findOrFail($id);
         $users = User::where('id','!=',$user->id)->pluck('name','id');
 
-        return redirect("/backend/users.confirm")->compact('user');
+        return view("/backend/users.confirm",compact('user','users'));
     }
 }

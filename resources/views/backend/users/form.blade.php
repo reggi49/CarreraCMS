@@ -62,11 +62,27 @@
                 <span class="help-block">{{ $errors->first('bio') }}</span>
             @endif
         </div>
+        {!! Form::label('Avatar') !!}
+        <div class = "form-group {{ $errors->has('avatar') ? 'has-error' : '' }}">
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+            <img src="{{ $post->image_thumb_url or 'https://via.placeholder.com/200x150?text?No+Image'}}" data-src="https://via.placeholder.com/200x150" alt="No Image">
+            </div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+            <div>
+                <span class="btn btn-default btn-file"><span class="fileinput-new">Select Avatar</span><span class="fileinput-exists">Change</span>{!! Form::file('avatar') !!}</span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+            </div>
+            </div>
+            @if($errors->has('image'))
+                <span class="help-block"> {{ $errors->first('image') }}</span>
+            @endif
+        </div>
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
         <button type="submit" class="btn btn-primary">{{ $user->exists ? 'Update' : 'Save' }}</button>
-        <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</a>
+        <a href="{{ route('backend.users.index') }}" class="btn btn-default">Cancel</a>
     </div>
   </div>
   <!-- /.box -->

@@ -23,6 +23,7 @@ class BlogController extends BackendController
         parent::__construct();
         $this->uploadPath = public_path(config('cms.image.directory'));
     } 
+    
     public function index(Request $request)
     {
         if (($status = $request->get('status')) && $status == 'trash')

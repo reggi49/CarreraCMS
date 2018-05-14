@@ -4,16 +4,16 @@
     <div class="comment-body padding-10">
         <ul class="comments-list">
             @foreach($postComments as $comment)
-            <li class="comment-item">
-                <div class="comment-heading clearfix">
-                    <div class="comment-author-meta">
-                        <h4>{{ $comment->author_name}} <small> {{ $comment->date }}</small></h4>
+                <li class="comment-item">
+                    <div class="comment-heading clearfix">
+                        <div class="comment-author-meta">
+                            <h4>{{ $comment->author_name}} <small> {{ $comment->date }}</small></h4>
+                        </div>
                     </div>
-                </div>
-                <div class="comment-content">
-                    {!! $comment->body_html !!}    
-                </div>
-            </li>
+                    <div class="comment-content">
+                        {!! $comment->body_html !!}    
+                    </div>
+                </li>
             @endforeach
         </ul>
         <nav>

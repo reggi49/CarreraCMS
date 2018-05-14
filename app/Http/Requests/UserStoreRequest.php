@@ -29,6 +29,7 @@ class UserStoreRequest extends FormRequest
             'password'      => 'required|confirmed',
             'role'      => 'required',
             'slug'      => 'required|unique:users',
+            'avatar'      => 'mimes:jpg,jpeg,bmp,png,gif,svg',
         ];
     }
 }

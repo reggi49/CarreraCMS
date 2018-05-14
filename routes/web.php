@@ -68,11 +68,17 @@ Route::get('/backend/users/confirm/{users}',[
     'uses' => 'backend\UsersController@confirm',
     'as' => 'backend.users.confirm'
     ]);
+    
+Route::get('/backend/comments/published/{comments}',[
+    'uses' => 'backend\CommentsController@published',
+    'as' => 'backend.comments.published'
+    ]);
 
 Route::resource('/backend/blog', 'Backend\BlogController',['as' => 'backend']);
 Route::resource('/backend/categories', 'Backend\CategoriesController',['as' => 'backend']);
 Route::resource('/backend/tags', 'Backend\TagsController',['as' => 'backend']);
 Route::resource('/backend/users', 'Backend\UsersController',['as' => 'backend']);
+Route::resource('/backend/comments', 'Backend\CommentsController',['as' => 'backend']);
 
 // Get Data Datatables
 Route::get('datatable/getdata', 'Backend\BlogController@getPosts')->name('datatable/getdata');
