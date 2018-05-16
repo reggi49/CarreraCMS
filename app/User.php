@@ -45,14 +45,32 @@ class User extends Authenticatable
         $avatarurl = "";
         if ((!is_null($this->avatar)) AND (!empty($this->avatar != "")))
         {
-            $imagePath = public_path()."/img/".$this->avatar;
-            if (file_exists($imagePath)) $avatarurl = asset("img/". $this->avatar);
+            $imagePath = public_path()."/images/".$this->avatar;
+            if (file_exists($imagePath)){
+                $avatarurl = asset("images/". $this->avatar);
+            }else{
+                $avatarurl = asset("img/default-gravatar.png");
+            }
         }else
         {
             $avatarurl = asset("img/default-gravatar.png");
         }
 
         return $avatarurl;
+    }
+
+    public function getImageThumbUrlAttribute($value)
+    {
+        $imageUrl = "";
+        if (!is_null($this->avatar))
+        {
+            $directory = config('cms.image.directory');
+            $ext = substr(strrchr($this->avatar,'.'),1);
+            $thumbnail = str_replace(".{{ext}}", "_thumb.{ext}",$this->avatar);
+            $imagePath = public_path()."/{$directory}/".$thumbnail;
+            if (file_exists($imagePath)) $imageUrl = asset("/{$directory}/". $thumbnail);
+        }
+        return $imageUrl;
     }
 
     public function getRouteKeyName()

@@ -1,7 +1,6 @@
 <div class="col-xs-9">
   <div class="box">
     <div class="box-body ">
-
         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
             {!! Form::label('name') !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -66,7 +65,7 @@
         <div class = "form-group {{ $errors->has('avatar') ? 'has-error' : '' }}">
             <div class="fileinput fileinput-new" data-provides="fileinput">
             <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-            <img src="{{ $post->image_thumb_url or 'https://via.placeholder.com/200x150?text?No+Image'}}" data-src="https://via.placeholder.com/200x150" alt="No Image">
+            <img src="{{ $user->image_thumb_url or 'https://via.placeholder.com/200x150?text?No+Image'}}" data-src="https://via.placeholder.com/200x150" alt="No Image">
             </div>
             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
             <div>

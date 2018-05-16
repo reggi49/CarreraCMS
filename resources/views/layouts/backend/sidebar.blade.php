@@ -69,10 +69,10 @@
             <span>Media</span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li>
+          <a href="{{ url('backend/pages')}}">
             <i class="fa fa-files-o"></i>
-            <span>Laman</span>
+            <span>Pages</span>
           </a>
         </li>
         <li>

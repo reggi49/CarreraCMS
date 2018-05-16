@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Arr;
 
 class UsersController extends BackendController
 {
@@ -119,7 +120,18 @@ class UsersController extends BackendController
      */
     public function update(Requests\UserUpdateRequest $request, $id)
     {
-        User::findOrFail($id)->update($request->all());
+        $user = User::findOrFail($id);
+       
+        $data = $this->handleRequest($request);
+        
+        $newPassword = $data['password'];
+        if(empty($newPassword)){
+            //$data['password'] = bcrypt($data['password']);
+            $user->update(array_except($data, ['password']));
+        }else{
+            $data['password'] = bcrypt($data['password']);
+            $user->update($data);
+        }
 
         $user->detachRoles();
         $user->attachRole($request->role);

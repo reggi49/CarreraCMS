@@ -21,6 +21,11 @@ Route::get('/{post}', [
     'as' => 'blog.show'
 ]);
 
+Route::get('/about/{laman}',[
+    'uses'  => 'AboutController@',
+    'as'    =>'',
+]);
+
 Route::post('/blog/{post}/comments', [
     'uses' => 'CommentsController@store',
     'as' => 'blog.comments'
@@ -79,6 +84,7 @@ Route::resource('/backend/categories', 'Backend\CategoriesController',['as' => '
 Route::resource('/backend/tags', 'Backend\TagsController',['as' => 'backend']);
 Route::resource('/backend/users', 'Backend\UsersController',['as' => 'backend']);
 Route::resource('/backend/comments', 'Backend\CommentsController',['as' => 'backend']);
+Route::resource('/backend/pages', 'Backend\PagesController',['as' => 'backend']);
 
 // Get Data Datatables
 Route::get('datatable/getdata', 'Backend\BlogController@getPosts')->name('datatable/getdata');

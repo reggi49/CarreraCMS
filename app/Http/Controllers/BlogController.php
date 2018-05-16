@@ -77,4 +77,9 @@ class BlogController extends Controller
         $post->increment('view_count');
         return view("blog.show", compact('post','postComments'));
     }
+
+    public function about(About $about) 
+    {
+        $pageTitle = $about->title;
+    }
 }
