@@ -25,7 +25,8 @@
                                 </ul>
                             </div>
 
-                            {!! $post->body_html !!}
+                            {!! html_entity_decode($post->body_html) !!}
+                            {!! html_entity_decode($sharePost) !!}
                         </div>
                     </div>
                 </article>

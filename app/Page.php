@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class Page extends Model
 {
@@ -20,5 +21,10 @@ class Page extends Model
         if ($showTimes) $format = 'l, d F Y';
         return \Carbon\Carbon::parse($this->attributes['created_at'])->format($format);
         //return \Carbon\Carbon::parse($this->attributes['created_at'])->diffForHumans();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

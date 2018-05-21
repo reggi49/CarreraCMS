@@ -21,9 +21,9 @@ Route::get('/{post}', [
     'as' => 'blog.show'
 ]);
 
-Route::get('/about/{laman}',[
-    'uses'  => 'AboutController@',
-    'as'    =>'',
+Route::get('/about/{page}',[
+    'uses'  => 'BlogController@about',
+    'as'    =>'blog.about',
 ]);
 
 Route::post('/blog/{post}/comments', [
@@ -45,6 +45,8 @@ Route::get('/tag/{tag}',[
     'uses' => 'BlogController@tag',
     'as' => 'tag'
 ]);
+
+// S:BACKEND ROUTE //
 
 // Authentication Routes...
 $this->get('backend/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -88,3 +90,5 @@ Route::resource('/backend/pages', 'Backend\PagesController',['as' => 'backend'])
 
 // Get Data Datatables
 Route::get('datatable/getdata', 'Backend\BlogController@getPosts')->name('datatable/getdata');
+
+// E:BACKEND ROUTE //

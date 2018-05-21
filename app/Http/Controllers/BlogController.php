@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Jorenvh\Share\ShareFacade as Share;
 use App\Post;
 use App\Category;
 use App\User;
 use App\Tag;
+use App\Page;
 
 class BlogController extends Controller
 {
@@ -75,11 +77,20 @@ class BlogController extends Controller
             ->simplePaginate($this->limit);
 
         $post->increment('view_count');
-        return view("blog.show", compact('post','postComments'));
+
+        $sharePost = Share::page(url($post->slug), $post->title)
+            ->facebook()
+            ->twitter()
+            ->googlePlus()
+            ->linkedin('Extra linkedin summary can be passed here');
+            
+        return view("blog.show", compact('post','postComments','sharePost'));
     }
 
-    public function about(About $about) 
+    public function about(Page $page) 
     {
-        $pageTitle = $about->title;
+        $pageBody = $page->body;
+
+        return view("blog.about", compact('pageBody'));
     }
 }

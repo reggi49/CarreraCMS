@@ -21,7 +21,7 @@
                         <div class="post-item-body">
                             <div class="padding-10">
                                 <h2><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h2>
-                                <p>{!! $post->excerpt_html !!}</p>
+                                <p>{!! html_entity_decode($post->excerpt_html) !!}</p>
                             </div>
 
                             <div class="post-meta padding-10 clearfix">
