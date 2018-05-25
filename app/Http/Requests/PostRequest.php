@@ -30,6 +30,7 @@ class PostRequest extends FormRequest
             'body' => 'required',
             'published_at' => 'nullable|date_format:Y-m-d H:i:s',
             'category_id' => 'required',
+            'post_type' => 'required',
             'image'      => 'mimes:jpg,jpeg,bmp,png,gif,svg',
         ];
         switch ($this->method()){

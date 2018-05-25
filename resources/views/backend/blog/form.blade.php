@@ -86,6 +86,19 @@
             </div>
             <div class="box">
                 <div class="box-header with-border">
+                    <h3 class="box-title">Format</h3>
+                </div>
+                <div class="box-body">
+                    <div class = "form-group {{ $errors->has('post_type') ? 'has-error' : '' }}">
+                        {!! Form::select('post_type',App\PostType::pluck('name','id'),null, ['class' =>'form-control','placeholder' => 'Choose  Format']) !!}
+                        @if($errors->has('post_type'))
+                            <span class="help-block"> {{ $errors->first('post_type') }}</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-header with-border">
                     <h3 class="box-title">Tags</h3>
                 </div>
                 <div class="box-body">

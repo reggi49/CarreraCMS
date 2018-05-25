@@ -10,7 +10,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 class Post extends Model
 {
     use SoftDeletes;
-    protected $fillable =['title','slug','excerpt','body','published_at','category_id','image'];
+    protected $fillable =['title','slug','excerpt','body','published_at','category_id','image','post_type'];
     protected $dates=['published_at'];
     
     public function author()
@@ -91,7 +91,7 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     } 
-
+   
     public function tags()
     {
         return $this->belongsToMany(Tag::class);

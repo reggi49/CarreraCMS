@@ -341,6 +341,7 @@ class BlogController extends BackendController
         $post = Post::findOrFail($id);
         $oldImage = $post->image;
         $data = $this->handleRequest($request);
+        // dd($data);
         $post->update($data);
         $post->createTags($data['post_tags']);
 
