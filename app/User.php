@@ -40,7 +40,7 @@ class User extends Authenticatable
         return $this->bio ? Markdown::convertToHtml(e($this->bio)) : NULL;
     }
 
-    public function avatar()
+    public function gravatar()
     {
         $avatarurl = "";
         if ((!is_null($this->avatar)) AND (!empty($this->avatar != "")))
@@ -51,7 +51,8 @@ class User extends Authenticatable
             }else{
                 $avatarurl = asset("img/default-gravatar.png");
             }
-        }else
+        }
+        else
         {
             $avatarurl = asset("img/default-gravatar.png");
         }

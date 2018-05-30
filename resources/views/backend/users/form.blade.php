@@ -65,7 +65,7 @@
         <div class = "form-group {{ $errors->has('avatar') ? 'has-error' : '' }}">
             <div class="fileinput fileinput-new" data-provides="fileinput">
             <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-            <img src="{{ $user->image_thumb_url or 'https://via.placeholder.com/200x150?text?No+Image'}}" data-src="https://via.placeholder.com/200x150" alt="No Image">
+                <img src="{{ ($user->image_thumb_url) ? $user->image_thumb_url : 'http://placehold.it/200x150&text=No+Image' }}" alt="...">
             </div>
             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
             <div>
@@ -73,8 +73,8 @@
                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
             </div>
             </div>
-            @if($errors->has('image'))
-                <span class="help-block"> {{ $errors->first('image') }}</span>
+            @if($errors->has('avatar'))
+                <span class="help-block"> {{ $errors->first('avatar') }}</span>
             @endif
         </div>
     </div>

@@ -59,7 +59,7 @@ $this->post('backend/password/email', 'Auth\ForgotPasswordController@sendResetLi
 $this->get('backend/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('backend/password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('backend/home', 'Backend\HomeController@index');
+Route::get('backend/home', 'Backend\HomeController@index')->name('backend.home');
 Route::get('backend/media', 'Backend\HomeController@media');
 
 Route::put('/backend/blog/restore/{blog}',[
@@ -92,3 +92,14 @@ Route::resource('/backend/pages', 'Backend\PagesController',['as' => 'backend'])
 Route::get('datatable/getdata', 'Backend\BlogController@getPosts')->name('datatable/getdata');
 
 // E:BACKEND ROUTE //
+
+// S:MEMBER ROUTE //
+
+// Authentication Routes...
+Route::prefix('member')->group(function(){
+    $this->get('/home', 'Member\MemberController@index')->name('member.home');
+    $this->get('/login', 'Auth\MemberLoginController@showLoginForm')->name('member.login');
+    $this->post('/login', 'Auth\MemberLoginController@login')->name('member.login.submit');
+});
+
+// E:MEMBER ROUTE //
