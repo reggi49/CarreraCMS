@@ -2,7 +2,7 @@
     <div class="media">
         <div class="media-left">
         <a href="{{ route('author', $post->author->slug)}}">
-            <img alt="{{ $post->author->name }}" width="100" height="100" src="{{ $post->author->avatar() }}" class="media-object">
+            <img alt="{{ $post->author->name }}" width="100" height="100" src="{{ $post->author->gravatar() }}" class="media-object">
         </a>
         </div>
         <div class="media-body">
