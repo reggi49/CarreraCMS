@@ -1,0 +1,291 @@
+#autoriders {
+	width:60vw;
+	height:100vh;
+	display:inline-block;
+	margin-left:20vw;
+	position:fixed;
+	overflow-x:hidden;
+	overflow-y:scroll;
+}
+
+#autoriders::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+	border-radius:0;
+	background-color:#f5f5f5;
+}
+
+#autoriders::-webkit-scrollbar {
+	width:0;
+	border-radius:0;
+	background-color:rgba(0,0,0,0.25);
+}
+
+#autoriders::-webkit-scrollbar-thumb {
+	border-radius:0;
+	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+	background:linear-gradient(135deg, #ffee4c 0%, #f8df46 65%, #d9ad23 85%, #facd4a 100%);
+}
+
+/*auto place finder*/
+.auto-place-finder {
+	width:60vw;
+	height:30vh;
+	background:linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+	margin-top:10vh;
+	margin-bottom:10vh;
+}
+
+.auto-place-finder-box {
+	width:55vw;
+	height:30vh;
+	margin-left:5vw;
+	position:relative;
+	font-size:0;
+}
+
+.auto-place-finder-box>div {
+	display:inline-block;
+}
+
+.auto-place-finder-box-logo {
+	width:8vw;
+	height:30vh;
+	background:url('logo-potrait.png');
+	background-repeat:no-repeat;
+	margin-left:-4vw;
+}
+
+.auto-place-finder-box-info {
+	width:47vw;
+	height:30vh;
+}
+
+.auto-place-finder-box-info-title {
+	width:45vw;
+	margin-left:1vw;
+	position:absolute;
+	margin-top:3vh;
+}
+
+.auto-place-finder-box-info-choose {
+	width:45vw;
+	height:10vh;
+	margin-left:1vw;
+	position:absolute;
+	bottom:3vh;
+}
+
+.auto-place-finder-box-info-choose-email {
+	width:14.5vw;
+	height:40px;
+	border-radius:2.5px;
+	background:rgba(0,0,0,0.25);
+	position:absolute;
+	margin-top:6vh;
+	display:inline-block;
+	padding-left:0.5vw;
+}
+
+.custom-select {
+	width:14.5vw;
+	height:40px;
+	position:absolute;
+	display:inline-block;
+	background:rgba(0,0,0,0.25);
+	border-radius:2.5px;
+	font-family:'Lato';
+	font-weight:300;
+	margin-left:17vw;
+	margin-top:6vh;
+	font-size:16px;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 17.5px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top:7px;
+}
+
+.select-items div,.select-selected {
+  color:white;
+  cursor: pointer;
+  padding:10px;
+  user-select: none;
+}
+
+.select-items {
+  position: absolute;
+  background-color:rgba(0,0,0,0.25);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.auto-place-button {
+	width:200px;
+	height:40px;
+	border-radius:40px;
+	background:linear-gradient(-45deg, #FFB400, #FFEB00);
+	box-shadow:0 0 10px rgba(0,0,0,0.25);
+	display:inline-block;
+	position:absolute;
+	margin-top:6vh;
+	margin-left:34vw;
+	cursor:hand;
+}
+
+/*main*/
+.autoriders-main {
+	width:60vw;
+	height:21.5vw;
+	margin-top:45px;
+}
+
+.autoriders-main-slide {
+	width:39.5vw;
+	height:21.5vw;
+	background:#1e1e1e;
+	position:absolute;
+}
+
+.autoriders-main-most {
+	width:19.5vw;
+	height:21.5vw;
+	background:#1e1e1e;
+	right:0;
+	position:absolute;
+	cursor:hand;
+}
+
+.autoriders-main-most-title {
+	width:95%;
+	height:auto;
+	top:0;
+	display:inline-block;
+	margin-left:5%;
+	margin-top:2vh;
+	margin-bottom:0.5vh;
+}
+
+.autoriders-main-most-list {
+	width:90%;
+	height:6vh;
+	display:inline-block;
+	margin-left:5%;
+	margin-top:1vh;
+}
+/*main news updates*/
+.autoriders-main-news {
+	width:60vw;
+	height:42vh;
+	margin-top:1vh;
+}
+
+.autoriders-main-news-title {
+	width:auto;
+	height:4vh;
+	margin-top:5vh;
+	margin-left:2vw;
+}
+	
+.autoriders-main-news-left {
+	width:29vw;
+	height:42vh;
+	position:absolute;
+}
+
+.autoriders-main-news-left-image {
+	width:29vw;
+	height:27vh;
+}
+
+.autoriders-main-news-left-title {
+	width:29vw;
+	height:15vh;
+}
+
+.autoriders-main-news-left-title-text {
+	width:25vw;
+	height:8vh;
+	margin-left:2vw;
+	margin-top:2vh;
+}
+
+.autoriders-main-news-right {
+	width:29vw;
+	height:42vh;
+	right:0;
+	position:absolute;
+}
+
+.autoriders-main-news-right-list {
+	width:29vw;
+	height:13vh;
+	margin-bottom:1vh;
+}
+
+.autoriders-main-news-right-list-image {
+	width:14vw;
+	height:13vh;
+	position:absolute;
+}
+
+.autoriders-main-news-right-list-text {
+	width:14vw;
+	height:13vh;
+	right:0;
+	position:absolute;
+}
+
+.autoriders-main-news-right-title-text-box {
+	width:14vw;
+	height:13vh;
+	margin-top:1vh;
+}
+
+/*main news history*/
+.autoriders-main-news-history {
+	width:55vw;
+	height:24vh;
+	display:inline-block;
+	margin-bottom:2.5vh;
+	margin-left:2.5vw;
+	position:relative;
+}
+
+.autoriders-main-news-history-image {
+	width:24vw;
+	height:24vh;
+	display:inline-block;
+	position:absolute;
+}
+
+.autoriders-main-news-history-title {
+	width:30vw;
+	height:24vh;
+	display:inline-block;
+	position:absolute;
+	right:0;
+}

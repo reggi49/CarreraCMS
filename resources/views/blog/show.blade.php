@@ -1,23 +1,44 @@
 @extends('layouts.main')
+<link rel="stylesheet" href="{{ asset('css/news.css')}}"/>
 
 @section('content')
-    <div class="container">
-        <div class="row">
-             <div class="col-md-8">
 
-                @if ($post->post_type === 2)
-                    @include('blog.detail.foto')
-                @elseif ($post->post_type === 3)
-                    @include('blog.detail.video')
-                @else
-                    @include('blog.detail.standard')
-                @endif
+@include('blog.partials.parallax')
 
-                @include('blog.partials.author')
-                
-                @include('blog.comments')
+    <div id="news">
+            @if ($post->post_type === 2)
+                @include('blog.detail.foto')
+            @elseif ($post->post_type === 3)
+                @include('blog.detail.video')
+            @else
+                @include('blog.detail.standard')
+            @endif
+            
+            <div id="news-left">
+                <div class="news-inner">
+                    <div class="news-inner-tab80">
+                        <div class="news-inner-tab37">
+                            @include('blog.partials.related-news')
+                        </div>
+                        <div class="news-inner-tab37">
+                            @include('blog.partials.lastest-news')
+                        </div>
+                    </div>
+                </div>
             </div>
-            @include('layouts.sidebar')
-        </div>
+
+            <div id="news-right">
+                <div class="news-inner">
+                    <div class="news-right-video">
+                        @include('blog.partials.video-single')
+                    </div>
+                    <div class="news-right-inspirations">
+                        @include('blog.partials.inspirations')
+                    </div>
+                </div>
+            </div>            
+            {{-- @include('blog.comments') --}}
+           
+            {{-- @include('layouts.sidebar') --}}
     </div>
 @endsection

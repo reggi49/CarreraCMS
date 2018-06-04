@@ -16,6 +16,26 @@ Route::get('/', [
     'as' => 'blog'
 ]);
 
+Route::get('/interior',[
+    'uses' => 'ChannelController@index',
+    'as' => 'interior'
+]);
+
+Route::get('/riders',[
+    'uses' => 'ChannelController@index',
+    'as' => 'riders'
+]);
+
+Route::get('/automotive',[
+    'uses' => 'ChannelController@index',
+    'as' => 'automotive'
+]);
+
+Route::get('/video',[
+    'uses' => 'ChannelController@index',
+    'as' => 'automotive'
+]);
+
 Route::get('/{post}', [
     'uses' => 'BlogController@show',
     'as' => 'blog.show'

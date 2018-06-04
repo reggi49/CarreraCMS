@@ -1,0 +1,292 @@
+/* home */
+#home {
+	width:100vw;
+	height:48vh;
+	top:13vh;
+	padding:0;
+	font-size:0;
+	position:absolute;
+}
+
+.home-frame {
+	width:100vw;
+	height:48vh;
+	margin-top:13vh;
+	background:url('../img/home-bc.svg');
+	background-repeat:no-repeat;
+	background-size:auto 100%;
+	background-position:center center;
+	position:absolute;
+}
+
+.home-leftwing {
+	width:16.75vw;
+	height:100%;
+	position:absolute;
+	display:inline-block;
+}
+
+.home-center {
+	width:66.5vw;
+	height:40vh;
+	margin-left:16.75vw;
+	margin-top:6vh;
+	position:absolute;
+	display:inline-block;
+}
+
+.home-rightwing {
+	width:16.75vw;
+	height:100%;
+	position:absolute;
+	display:inline-block;
+	right:0;
+}
+
+/* leftwing */
+.wing-list-head {
+	width:14.75vw;
+	height:6vh;
+	margin-left:1vw;
+	margin-bottom:1.15vh;
+}
+
+.leftwing-list {
+	width:14.75vw;
+	height:11vh;
+	margin-left:1vw;
+	margin-bottom:1vh;
+	cursor:hand;
+}
+
+.wing-small-title {
+	width:auto;
+	height:15px;
+	margin-left:1vw;
+	position:absolute;
+}
+
+.wing-big-title {
+	width:auto;
+	height:32px;
+	margin-left:1vw;
+	position:absolute;
+	margin-top:20px;
+}
+
+.leftwing-image {
+	height:11vh;
+	width:14.75vw;
+	position:absolute;
+	overflow:hidden;
+	object-fit:cover;
+}
+
+.leftwing-shadow {
+	width:14.75vw;
+	height:11vh;
+	background:rgba(0,0,0,0.5);
+	position:absolute;
+}
+
+.leftwing-list-title {
+	width:14.75vw;
+	height:20px;
+	margin-bottom:1vh;
+	margin-left:1vw;
+	position:absolute;
+	margin-top:calc(11vh - 35px);
+}
+
+/* centerwing */
+.centerwing-left {
+	width:11vw;
+	height:29vh;
+	position:absolute;
+	left:0;
+	top:0;
+}
+
+.centerwing-2block {
+	width:100%;
+	height:14vh;
+	position:relative;
+	margin-bottom:1vh;
+}
+
+.centerwing-center {
+	width:43.5vw;
+	height:40vh;
+	position:absolute;
+	left:11.5vw;
+	top:0;
+}
+
+.centerwing-center-up {
+	width:43.5vw;
+	height:29vh;
+	position:absolute;
+	top:0;
+}
+
+.centerwing-center-up-left {
+	width:29vw;
+	height:29vh;
+	background:yellow;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.centerwing-center-up-right {
+	width:14vw;
+	height:29vh;
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.centerwing-center-bottom {
+	width:43.5vw;
+	height:10vh;
+	position:absolute;
+	bottom:0;
+}
+
+.centerwing-bottom-3block  {
+	width:10vw;
+	height:100%;
+	background:yellow;
+	margin-left:0.5vw;
+	position:relative;
+	display:inline-block;
+}
+
+.centerwing-bottom-title {
+	width:12vw;
+	height:100%;
+	position:relative;
+	display:inline-block;
+}
+	
+.centerwing-right {
+	width:11vw;
+	height:29vh;
+	position:absolute;
+	right:0;
+	top:0;
+}
+
+.centerwing-bottom-title-text {
+	width:10vw;
+	height:100%;
+	margin-left:1vw;
+	margin-top:1vh;
+	position:absolute;
+}
+
+/*rightwing*/
+.rightwing-list {
+	width:14.75vw;
+	height:4vh;
+	margin-left:1vw;
+	margin-bottom:2vh;
+	cursor:hand;
+}
+
+.rightwing-icon-premium {
+	width:5vw;
+	height:4vh;
+	background:url('premium.png');
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:auto 100%;
+	position:absolute;
+	object-fit:cover;
+}
+
+.rightwing-icon-camaro {
+	width:5vw;
+	height:4vh;
+	background:url('camaro.png');
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:auto 100%;
+	position:absolute;
+	object-fit:cover;
+}
+
+.rightwing-icon-picasso {
+	width:5vw;
+	height:4vh;
+	background:url('picasso.png');
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:auto 100%;
+	position:absolute;
+	object-fit:cover;
+}
+
+.rightwing-icon-newsuperior {
+	width:5vw;
+	height:4vh;
+	background:url('newsuperior.png');
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:auto 100%;
+	position:absolute;
+	object-fit:cover;
+}
+
+.rightwing-icon-camarofiesta {
+	width:5vw;
+	height:4vh;
+	background:url('camarofiesta.png');
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:auto 100%;
+	position:absolute;
+	object-fit:cover;
+}
+
+.rightwing-icon-riders {
+	width:5vw;
+	height:4vh;
+	background:url('riders.png');
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:auto 100%;
+	position:absolute;
+	object-fit:cover;
+}
+
+.rightwing-small-title {
+	width:7vw;
+	height:1.5vh;
+	position:absolute;
+	margin-left:6vw;
+}
+
+.rightwing-big-title {
+	width:7vw;
+	height:2.5vh;
+	position:absolute;
+	margin-top:1.5vh;
+	margin-left:6vw;
+}
+
+/* tab */
+.home-tab-up {
+	width:95%;
+	height:100%;
+	position:absolute;
+	top:0;
+}
+
+.home-tab-bottom {
+	width:100%;
+	height:auto;
+	position:absolute;
+	bottom:0;
+	margin-bottom:5%;
+}

@@ -129,6 +129,11 @@ class Post extends Model
         return $query->orderBy('created_at','desc');
     }
     
+    public function scopeCategory($query,$value)
+    {
+        return $query->where("category_id","=",$value);
+    }
+    
     public function scopePopular($query)
     {
         return $query->orderBy('view_count','desc');
