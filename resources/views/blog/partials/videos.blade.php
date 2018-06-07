@@ -2,9 +2,10 @@
 <h2 style="color:#1e1e1e;">Videos</h2>
 </div>
 <div class="news-right-video-cont">
+@foreach($videos as $video)
 <div class="news-right-video-cont-list">
     <div class="news-right-video-cont-list-thumb">
-        <img class="news-right-video-cont-list-thumb-image" src="01.jpg"/>
+        <img class="news-right-video-cont-list-thumb-image" src="{{ $video->image_url }}"/>
         
         <div class="news-right-video-cont-list-thumb-shade">
         
@@ -24,7 +25,7 @@
     </div>
     
     <div class="news-right-video-cont-list-title">
-        <h4>Lorem Ipsum Dolor Sir Amet Lorem Ipsum Dolor Sir Amet</h4>
+        <h4>{{ $video->title }}</h4>
     </div>
     
     <div class="news-right-video-cont-list-viewer">
@@ -48,4 +49,5 @@
         <img class="news-right-video-cont-list-duration-icon" src="duration-icon.svg"/>
     </div>
 </div>
+@endforeach
 </div>

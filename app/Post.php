@@ -10,7 +10,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 class Post extends Model
 {
     use SoftDeletes;
-    protected $fillable =['title','slug','excerpt','body','published_at','category_id','image','post_type'];
+    protected $fillable =['title','slug','excerpt','body','published_at','category_id','image','post_type','set_headline'];
     protected $dates=['published_at'];
     
     public function author()
@@ -138,6 +138,16 @@ class Post extends Model
     {
         return $query->orderBy('view_count','desc');
     }
+    
+    public function scopeVideos($query)
+    {
+        return $query->where("post_type","=","3");
+    }
+
+    public function scopeHeadline($query,$value)
+    {
+        return $query->where("set_headline","=","1")->orderBy('created_at','desc')->limit($value);
+    }
 
     public function scopePublished($query)
     {
@@ -203,8 +213,20 @@ class Post extends Model
     {
         return $this->tags->pluck('name');
     }
+
     public function getTagsAllAttribute()
     {
         return Tag::get()->pluck('name');
     }
+
+    public function relatedPostsByTag()
+    {
+        // get the related categories id of the $post
+        $related_category_ids = Category::pluck('categories.id');
+
+        return Post::whereHas('category', function ($query) use($related_category_ids) {
+            $query->whereIn('category_id', $related_category_ids);
+        })->where('id', '<>', $this->id)->take(5)->get();
+    }
+    
 }

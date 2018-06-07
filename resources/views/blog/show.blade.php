@@ -18,10 +18,10 @@
                 <div class="news-inner">
                     <div class="news-inner-tab80">
                         <div class="news-inner-tab37">
-                            @include('blog.partials.related-news')
+                            @include('blog.partials.related-articles')
                         </div>
                         <div class="news-inner-tab37">
-                            @include('blog.partials.lastest-news')
+                            @include('blog.partials.lastest-articles')
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
             <div id="news-right">
                 <div class="news-inner">
                     <div class="news-right-video">
-                        @include('blog.partials.video-single')
+                        @include('blog.partials.videos')
                     </div>
                     <div class="news-right-inspirations">
                         @include('blog.partials.inspirations')

@@ -197,7 +197,7 @@
 .rightwing-icon-premium {
 	width:5vw;
 	height:4vh;
-	background:url('premium.png');
+	background:url('../img/premium.png');
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:auto 100%;
@@ -208,7 +208,7 @@
 .rightwing-icon-camaro {
 	width:5vw;
 	height:4vh;
-	background:url('camaro.png');
+	background:url('../img/camaro.png');
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:auto 100%;
@@ -219,7 +219,7 @@
 .rightwing-icon-picasso {
 	width:5vw;
 	height:4vh;
-	background:url('picasso.png');
+	background:url('../img/picasso.png');
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:auto 100%;
@@ -230,7 +230,7 @@
 .rightwing-icon-newsuperior {
 	width:5vw;
 	height:4vh;
-	background:url('newsuperior.png');
+	background:url('../img/newsuperior.png');
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:auto 100%;
@@ -241,7 +241,7 @@
 .rightwing-icon-camarofiesta {
 	width:5vw;
 	height:4vh;
-	background:url('camarofiesta.png');
+	background:url('../img/camarofiesta.png');
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:auto 100%;
@@ -252,7 +252,7 @@
 .rightwing-icon-riders {
 	width:5vw;
 	height:4vh;
-	background:url('riders.png');
+	background:url('../img/riders.png');
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:auto 100%;

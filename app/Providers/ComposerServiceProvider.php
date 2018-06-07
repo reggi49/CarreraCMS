@@ -14,7 +14,11 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('layouts.sidebar', NavigationComposer::class);
+        view()->composer([
+            'blog.partials.lastest-articles',
+            'blog.partials.related-articles',
+            'blog.partials.videos'
+        ], NavigationComposer::class);
         // view()->composer('layouts.sidebar',function($view){
         //     $categories = Category::with(['posts'=>function($query){
         //     $query->published();

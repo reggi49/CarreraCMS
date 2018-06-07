@@ -24,7 +24,12 @@ class BlogController extends Controller
         ->filter(request()->only(['term','year','month']))
         ->simplePaginate($this->limit);
 
-        return view('blog.index',compact('posts'));
+        $headlines = Post::with('author','tags','category','comments')
+        ->headline(5)
+        ->published()
+        ->simplePaginate();
+
+        return view('blog.index',compact('posts','headlines'));
         //dd(\DB::getQUeryLog());
     }
     

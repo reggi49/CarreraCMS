@@ -99,6 +99,19 @@
             </div>
             <div class="box">
                 <div class="box-header with-border">
+                    <h3 class="box-title">Set As Headline</h3>
+                </div>
+                <div class="box-body">
+                    <div class = "form-group {{ $errors->has('set_headline') ? 'has-error' : '' }}">
+                        {!! Form::select('set_headline',['0' => 'No','1' => 'Yes'],null, ['class' =>'form-control','placeholder' => 'Set Headline']) !!}
+                        @if($errors->has('set_headline'))
+                            <span class="help-block"> {{ $errors->first('set_headline') }}</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-header with-border">
                     <h3 class="box-title">Tags</h3>
                 </div>
                 <div class="box-body">
