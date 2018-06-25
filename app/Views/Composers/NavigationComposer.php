@@ -17,6 +17,7 @@ class NavigationComposer
         $this->composeLastestArticles($view);
         $this->composeRelatedArticles($view);
         $this->composeVideos($view);
+        $this->composePopularTag($view);
     }
 
     private function composeCategories(View $view)
@@ -73,5 +74,12 @@ class NavigationComposer
         $lastestArticles = Post::published()->take(5)->get();
 
         $view->with('lastestArticles', $lastestArticles);
+    }
+
+    private function composePopularTag(view $view)
+    {
+        $popular_tags = (new Post)->getPopularTag();
+
+        $view->with('popular_tags', $popular_tags);
     }
 }

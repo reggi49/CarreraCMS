@@ -118,6 +118,7 @@ Ipsum Dolor Sir Amet</h4>
         @include('blog.partials.ask-place')
     </div>
 </div>
+<div id="load-data">
 @foreach($posts->slice(4) as $post)
 <!-- main news history -->
 <div class="autoriders-main-news-history">
@@ -138,11 +139,12 @@ Ipsum Dolor Sir Amet</h4>
     </div>
 </div>
 @endforeach
-
+</div>
 <!-- Load More -->
 <div class="long-load-more-button">
-    <div class="long-load-more-button-text">
-        <h3>Load More</h3>
+    <div id="remove-row" class="long-load-more-button-text">
+        {{-- <h3>Load More</h3> --}}
+        <button id="btn-more" data-id="{{ $post->id }}" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
     </div>
 </div>
 
@@ -173,6 +175,6 @@ Ipsum Dolor Sir Amet</h4>
     </div>
 </div>
 </div>
-
 </div>
+@include('blog.partials.loadmore')
 @endsection

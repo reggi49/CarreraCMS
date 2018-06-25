@@ -98,4 +98,47 @@ class BlogController extends Controller
 
         return view("blog.about", compact('pageBody'));
     }
+
+    public function loadMore(Request $request)
+    {
+        $output = '';
+        $id = $request->id;
+        
+        $posts = Post::where('id','<',$id)->orderBy('created_at','ASC')->limit(2)->get();
+        
+        if(!$posts->isEmpty())
+        {
+            foreach($posts as $post)
+            {
+                $url = url('blog/'.$post->slug);
+                $body = substr(strip_tags($post->body),0,500);
+                $body .= strlen(strip_tags($post->body))>500?"...":"";
+                                
+                $output .= '
+                <div class="autoriders-main-news-history">
+                    <div class="autoriders-main-news-history-image">
+                        <a href="'. $post->slug .'"><img class="image-fit" src="'. $post->image_url .'" alt="'. $post->title .'"/></a>
+                    </div>
+                    
+                    <div class="autoriders-main-news-history-title">
+                        <div class="autoriders-main-news-left-title-text">
+                            <div style="margin-left:-0.5vw;" class="news-left-pin">
+                                    
+                            </div>
+                                
+                            <h2 style="color:#1e1e1e;">'. $post->title .'</h2>
+                                
+                            <h5 style="margin-top:1vh;color:#1e1e1e;">'.$post->author->name.' | '.$post->date.'</h5>
+                        </div>
+                    </div>
+                </div>';
+            }
+            
+            $output .= '<div id="remove-row" class="long-load-more-button-text">
+                            <button id="btn-more" data-id="'.$post->id.'" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
+                        </div>';
+            
+            echo $output;
+        }
+    }
 }

@@ -111,6 +111,9 @@ Route::resource('/backend/pages', 'Backend\PagesController',['as' => 'backend'])
 // Get Data Datatables
 Route::get('datatable/getdata', 'Backend\BlogController@getPosts')->name('datatable/getdata');
 
+//Get Data LoadMore
+Route::post('blog/loadmore','BlogController@loadMore' );
+
 // E:BACKEND ROUTE //
 
 // S:MEMBER ROUTE //

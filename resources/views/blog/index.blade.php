@@ -376,21 +376,7 @@
         <img class="image-fit" src="{{ asset('img/kontes-jok-mobil.jpg')}}"/>
     </div>
     
-    <div class="centerwing-2block">
-        <div style="margin-left:5%;" class="home-tab-up">
-            <h4 style="color:white;">Popular Tag</h4>
-            <div class="home-tab-bottom">
-                <a href="#"><h5 style="color:white;">#RWSMBtech</h5></a>
-                <a href="#"><h5 style="color:white;">#GIIAS2018</h5></a>
-                <a href="#"><h5 style="color:white;">#IIMSA2018</h5></a>
-                <a href="#"><h5 style="color:white;">#InteriorRumah</h5></a>
-                <a href="#"><h5 style="color:white;">#MBtechCamaro</h5></a>
-            </div>
-        </div>
-        <div class="dash-vertical-left">
-        
-        </div>
-    </div>
+    @include('blog.partials.popular-tags')
 </div>
 </div>
 

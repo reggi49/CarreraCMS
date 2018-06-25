@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use DB;
 
 class Post extends Model
 {
@@ -229,4 +230,19 @@ class Post extends Model
         })->where('id', '<>', $this->id)->take(5)->get();
     }
     
+    public function getPopularTag()
+    {
+        // $commentsNumber = $this->tag->count();
+
+        //return $commentsNumber;
+         $popular_tags = DB::table('post_tag')
+            ->join('tags', 'post_tag.tag_id', '=', 'tags.id')
+            ->select(DB::raw('count(tag_id) as repetition, tag_id, tags.name, tags.slug'))
+            ->groupBy('tag_id','tags.name','tags.slug')
+            ->orderBy('repetition', 'desc')
+            ->limit(5)
+            ->get();
+            
+        return $popular_tags;
+    }
 }
