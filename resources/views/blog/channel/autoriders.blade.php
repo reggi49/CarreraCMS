@@ -144,7 +144,7 @@ Ipsum Dolor Sir Amet</h4>
 <div class="long-load-more-button">
     <div id="remove-row" class="long-load-more-button-text">
         {{-- <h3>Load More</h3> --}}
-        <button id="btn-more" data-id="{{ $post->id }}" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
+        <button id="btn-more" data-id="{{ $post->id }}" data-artikel="autoriders" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
     </div>
 </div>
 

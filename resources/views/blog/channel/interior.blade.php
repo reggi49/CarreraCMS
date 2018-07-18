@@ -124,139 +124,35 @@
 
 <!-- content listing -->
 <div class="list">
+<div id="load-data">
     @foreach($posts as $post)
-    <div class="list-content">
-        <div class="list-content-image">
-            <img class="list-content-image-inside" src="{{ $post->image_url }}" alt="{{ $post->title }}">
-        </div>
-        <div class="list-content-titlebox">
-            <div class="list-content-titlebox-next">
-            
+        <div class="list-content">
+            <div class="list-content-image">
+                <img class="list-content-image-inside" src="{{$post->image_url }}" alt="{{ $post->title }}">
             </div>
-            <div class="list-content-titlebox-title">
-                <div class="list-content-titlebox-title-inside">
-                <h3>{{ $post->title }}</h3>
+            <div class="list-content-titlebox">
+                <div class="list-content-titlebox-next">
+                
+                </div>
+                <div class="list-content-titlebox-title">
+                    <div class="list-content-titlebox-title-inside">
+                    <h3>{{ $post->title }}</h3>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     @endforeach
+</div>
 </div>
 
 <!-- Load More -->
 <div class="topics-load-more-button">
-    <div class="topics-load-more-button-text">
-        <h3>Load More</h3>
+    <div id="remove-row" class="topics-load-more-button-text">
+        <button id="btn-more" data-id="{{ $post->id }}" data-artikel="interior" class=""> <h3>Load More</h3> </button>
     </div>
 </div>
 
 <!-- topics updates -->
-<div class="topics-updates">
-    <div class="topics-updates-shadow-top">
-    
-    </div>
-    <div class="topics-updates-shadow-bottom">
-    
-    </div>
-    <div class="topics-updates-title">
-        <h2 style="color:#1e1e1e;">Latest Updates</h2>
-    </div>
-    <div class="topics-updates-inside">
-        <div class="topics-updates-list">
-            <div class="topics-updates-list-image">
-                <img class="topics-updates-list-image-inside" src="01.jpg"/>
-            </div>
-            
-            <div class="topics-updates-list-text">
-                <div class="topics-updates-list-icon">
-                
-                </div>
-                
-                <div class="topics-updates-list-text-inside">
-                    <h4 style="color:#1e1e1e;">Lorem Ipsum Dolor Sir Amet Lorem Ipsum Dolor Sir Amet</h4>
-                </div>
-            </div>
-        </div>
-        
-        <div class="topics-updates-list">
-            <div class="topics-updates-list-image">
-                <img class="topics-updates-list-image-inside" src="01.jpg"/>
-            </div>
-            
-            <div class="topics-updates-list-text">
-                <div class="topics-updates-list-icon">
-                
-                </div>
-                
-                <div class="topics-updates-list-text-inside">
-                    <h4 style="color:#1e1e1e;">Lorem Ipsum Dolor Sir Amet Lorem Ipsum Dolor Sir Amet</h4>
-                </div>
-            </div>
-        </div>
-        
-        <div class="topics-updates-list">
-            <div class="topics-updates-list-image">
-                <img class="topics-updates-list-image-inside" src="01.jpg"/>
-            </div>
-            
-            <div class="topics-updates-list-text">
-                <div class="topics-updates-list-icon">
-                
-                </div>
-                
-                <div class="topics-updates-list-text-inside">
-                    <h4 style="color:#1e1e1e;">Lorem Ipsum Dolor Sir Amet Lorem Ipsum Dolor Sir Amet</h4>
-                </div>
-            </div>
-        </div>
-        
-        <div class="topics-updates-list">
-            <div class="topics-updates-list-image">
-                <img class="topics-updates-list-image-inside" src="01.jpg"/>
-            </div>
-            
-            <div class="topics-updates-list-text">
-                <div class="topics-updates-list-icon">
-                
-                </div>
-                
-                <div class="topics-updates-list-text-inside">
-                    <h4 style="color:#1e1e1e;">Lorem Ipsum Dolor Sir Amet Lorem Ipsum Dolor Sir Amet</h4>
-                </div>
-            </div>
-        </div>
-        
-        <div class="topics-updates-list">
-            <div class="topics-updates-list-image">
-                <img class="topics-updates-list-image-inside" src="01.jpg"/>
-            </div>
-            
-            <div class="topics-updates-list-text">
-                <div class="topics-updates-list-icon">
-                
-                </div>
-                
-                <div class="topics-updates-list-text-inside">
-                    <h4 style="color:#1e1e1e;">Lorem Ipsum Dolor Sir Amet Lorem Ipsum Dolor Sir Amet</h4>
-                </div>
-            </div>
-        </div>
-        
-        <div class="topics-updates-list">
-            <div class="topics-updates-list-image">
-                <img class="topics-updates-list-image-inside" src="01.jpg"/>
-            </div>
-            
-            <div class="topics-updates-list-text">
-                <div class="topics-updates-list-icon">
-                
-                </div>
-                
-                <div class="topics-updates-list-text-inside">
-                    <h4 style="color:#1e1e1e;">Lorem Ipsum Dolor Sir Amet Lorem Ipsum Dolor Sir Amet</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('blog.partials.topics-update')
+@include('blog.partials.loadmore')
 @endsection

@@ -16,6 +16,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         view()->composer([
             'blog.partials.lastest-articles',
+            'blog.partials.topics-update',
             'blog.partials.related-articles',
             'blog.partials.popular-tags',
             'blog.partials.videos'

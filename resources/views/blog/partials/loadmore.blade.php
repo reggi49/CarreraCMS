@@ -2,11 +2,12 @@
 $(document).ready(function(){
    $(document).on('click','#btn-more',function(){
        var id = $(this).data('id');
+       var artikel = $(this).data('artikel');
        $("#btn-more").html("Loading....");
        $.ajax({
            url : '{{ url("blog/loadmore") }}',
            method : "POST",
-           data : {id:id, _token:"{{csrf_token()}}"},
+           data : {id:id,artikel:artikel, _token:"{{csrf_token()}}"},
            dataType : "text",
            success : function (data)
            {

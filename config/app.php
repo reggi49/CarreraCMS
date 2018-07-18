@@ -129,6 +129,7 @@ return [
         Laratrust\LaratrustServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
+        Spatie\Analytics\AnalyticsServiceProvider::class,
 
         /*
          * Laravel Framework Service Providers...
@@ -193,6 +194,7 @@ return [
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,

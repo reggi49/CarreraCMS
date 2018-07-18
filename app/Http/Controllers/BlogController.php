@@ -99,12 +99,21 @@ class BlogController extends Controller
         return view("blog.about", compact('pageBody'));
     }
 
+    public function contact(Page $page) 
+    {
+        $pageBody = $page->body;
+
+        return view("blog.contact", compact('pageBody'));
+    }
+
     public function loadMore(Request $request)
     {
         $output = '';
         $id = $request->id;
-        
+        $artikel = $request->artikel;
+
         $posts = Post::where('id','<',$id)->orderBy('created_at','ASC')->limit(2)->get();
+        
         
         if(!$posts->isEmpty())
         {
@@ -113,31 +122,60 @@ class BlogController extends Controller
                 $url = url('blog/'.$post->slug);
                 $body = substr(strip_tags($post->body),0,500);
                 $body .= strlen(strip_tags($post->body))>500?"...":"";
-                                
-                $output .= '
-                <div class="autoriders-main-news-history">
-                    <div class="autoriders-main-news-history-image">
-                        <a href="'. $post->slug .'"><img class="image-fit" src="'. $post->image_url .'" alt="'. $post->title .'"/></a>
-                    </div>
-                    
-                    <div class="autoriders-main-news-history-title">
-                        <div class="autoriders-main-news-left-title-text">
-                            <div style="margin-left:-0.5vw;" class="news-left-pin">
-                                    
-                            </div>
-                                
-                            <h2 style="color:#1e1e1e;">'. $post->title .'</h2>
-                                
-                            <h5 style="margin-top:1vh;color:#1e1e1e;">'.$post->author->name.' | '.$post->date.'</h5>
+                
+                if($artikel == 'autoriders'){
+                    $output .= '
+                    <div class="autoriders-main-news-history">
+                        <div class="autoriders-main-news-history-image">
+                            <a href="'. $post->slug .'"><img class="image-fit" src="'. $post->image_url .'" alt="'. $post->title .'"/></a>
                         </div>
-                    </div>
-                </div>';
+                        
+                        <div class="autoriders-main-news-history-title">
+                            <div class="autoriders-main-news-left-title-text">
+                                <div style="margin-left:-0.5vw;" class="news-left-pin">
+                                        
+                                </div>
+                                    
+                                <h2 style="color:#1e1e1e;">'. $post->title .'</h2>
+                                    
+                                <h5 style="margin-top:1vh;color:#1e1e1e;">'.$post->author->name.' | '.$post->date.'</h5>
+                            </div>
+                        </div>
+                    </div>';
+                    
+                }
+                else
+                {
+                    $output .= '
+                    <div class="list-content">
+                        <div class="list-content-image">
+                            <img class="list-content-image-inside" src="'. $post->image_url .'" alt="'. $post->title .'">
+                        </div>
+                        <div class="list-content-titlebox">
+                            <div class="list-content-titlebox-next">
+                            
+                            </div>
+                            <div class="list-content-titlebox-title">
+                                <div class="list-content-titlebox-title-inside">
+                                <h3>'. $post->title .'</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+                }
+                
             }
-            
-            $output .= '<div id="remove-row" class="long-load-more-button-text">
-                            <button id="btn-more" data-id="'.$post->id.'" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
-                        </div>';
-            
+
+            if($artikel == 'autoriders'){
+                $output .= '<div id="remove-row" class="long-load-more-button-text">
+                                <button id="btn-more" data-id="'.$post->id.'" data-artikel="autoriders" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
+                            </div>';
+            }else
+            {
+                $output .= '<div id="remove-row" class="long-load-more-button-text">
+                                <button id="btn-more" data-id="'.$post->id.'" data-artikel="interior" class="nounderline btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" > Load More </button>
+                            </div>';
+            }
             echo $output;
         }
     }

@@ -28,6 +28,11 @@ class ChannelController extends Controller
             $id_category = '9';
             $template = 'blog.channel.autoriders';
         }
+        elseif(str_contains($uri,'video'))
+        {
+            $id_category = '5';
+            $template = 'blog.channel.video';
+        }
 
         $posts = Post::with('author','tags','comments')
         ->category($id_category)

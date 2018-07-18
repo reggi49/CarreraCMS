@@ -36,14 +36,19 @@ Route::get('/video',[
     'as' => 'automotive'
 ]);
 
+Route::get('/about',[
+    'uses'  => 'BlogController@about',
+    'as'    =>'blog.about',
+]);
+
+Route::get('/contact',[
+    'uses'  => 'BlogController@contact',
+    'as'    =>'blog.contact',
+]);
+
 Route::get('/{post}', [
     'uses' => 'BlogController@show',
     'as' => 'blog.show'
-]);
-
-Route::get('/about/{page}',[
-    'uses'  => 'BlogController@about',
-    'as'    =>'blog.about',
 ]);
 
 Route::post('/blog/{post}/comments', [

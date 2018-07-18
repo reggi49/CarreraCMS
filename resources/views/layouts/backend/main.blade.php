@@ -78,10 +78,10 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('backend-assets/js/adminlte.min.js') }}"></script>
 <!-- Sparkline -->
-{{-- <script src="{{ asset('backend-assets/js/jquery.sparkline.min.js') }}"></script> --}}
+<script src="{{ asset('backend-assets/js/jquery.sparkline.min.js') }}"></script>
 <!-- jvectormap  -->
-{{-- <script src="{{ asset('backend-assets/js/jquery-jvectormap-1.2.2.min.js') }}"></script>
-<script src="{{ asset('backend-assets/js/jquery-jvectormap-world-mill-en.js') }}"></script> --}}
+{{-- <script src="https://adminlte.io/themes/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script> --}}
+{{-- <script src="https://adminlte.io/themes/AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script> --}}
 <!-- SlimScroll -->
 <script src="{{ asset('backend-assets/js/jquery.slimscroll.min.js') }}"></script>
 <!-- ChartJS -->
@@ -91,11 +91,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 {{-- Bootstrap Jansy Show Thumbnail --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
-
+<!-- ChartJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-{{-- <script src="{{ asset('backend-assets/js/dashboard2.js') }}"></script> --}}
+<script src="{{ asset('backend-assets/js/dashboard2.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-{{-- <script src="{{ asset('backend-assets/js/demo.js') }}"></script> --}}
+<script src="{{ asset('backend-assets/js/demo.js') }}"></script>
 <!-- page script -->
 <!-- ./wrapper -->
 @yield('scripts')

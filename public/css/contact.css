@@ -1,0 +1,40 @@
+/* contact */
+#contact {
+	width:100vw;
+	height:20vw;
+	margin-top:20vw;
+	position:absolute;
+}
+
+.contact-address {
+	width:30vw;
+	margin-left:35vw;
+	margin-bottom:2vw;
+}
+
+.contact-address-logo {
+	width:8vw;
+	margin-left:11vw;
+	margin-bottom:1vw;
+}
+
+.contact-list {
+	width:75vw;
+	height:5.5vw;
+	font-size:0;
+	margin-left:12.5vw;
+}
+
+.contact-list-box {
+	width:15vw;
+	height:5.5vw;
+	display:inline-block;
+}
+
+.contact-list-box-icon {
+	width:2vw;
+	height:2vw;
+	margin-left:6.5vw;
+	margin-bottom:0.25vw;
+	cursor:hand;
+}

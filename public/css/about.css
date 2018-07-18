@@ -1,0 +1,48 @@
+/* about */
+
+#about {
+	margin-top:5vw;
+	width:100vw;
+	font-size:0;
+	position:relative;
+}
+
+.about-info {
+	width:60vw;
+	margin-left:20vw;
+}
+
+.about-poin {
+	width:95vw;
+	margin-top:5vw;
+}
+
+.about-poin-list {
+	width:42.5vw;
+	height:7vw;
+	display:inline-block;
+	position:relative;
+	margin-top:2vw;
+	margin-left:5vw;
+	font-size:0;
+}
+
+.about-poin-space {
+	width:100%;
+	height:8vw;
+}
+
+.about-poin-list-icon {
+	width:3.75vw;
+	height:3.75vw;
+	display:inline-block;
+	position:absolute;
+}
+
+.about-poin-list-box {
+	width:37vw;
+	height:7vw;
+	display:inline-block;
+	margin-left:5.5vw;
+	position:absolute;
+}

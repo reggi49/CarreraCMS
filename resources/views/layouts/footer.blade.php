@@ -71,14 +71,14 @@
             </div>
             <div class="blackmenu-inline">
                 <div class="blackmenu-button">
-                    <a href="{{ url('about/about-us') }}">
+                    <a href="{{ url('about/') }}">
                         <h4 style="color:white;">About Us</h4>
                     </a>
                 </div>
             </div>
             <div class="blackmenu-inline">
                 <div class="blackmenu-button">
-                    <a href="{{ url('about/contact-us') }}">
+                    <a href="{{ url('contact/') }}">
                         <h4 style="color:white;">Contact Us</h4>
                     </a>
                 </div>
